@@ -3,10 +3,18 @@
   <div class="main">
     <h1>{{ msg }}</h1>
 
-    <!--ให้เลือกStore or User-->
-    <div><button v-on:click="Store">For Store</button></div>
+    <!-- เลือก login หรือ register -->
+    <div><router-link to="/Login">Login</router-link></div>
     <br>
-    <div><button v-on:click="User">For User</button></div>
+    <div><router-link to="/Register">Register</router-link></div>
+    <!--ให้เลือกStore or User-->
+    <br>
+    <br>
+    <div><router-link to="/Store">Store</router-link></div>
+    <br>
+    <div><router-link to="/User">User</router-link></div>
+    
+    <!-- ปล. มันยังเป็นแค่ลิ้งค์ ถ้าว่างก็หาวิธีใส่ปุ่มให้หน่อยนะ -->
 
   </div>
 </template>

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <!-- ตั้งให้ไฟล์ chi ขึ้นตลอด -->
+    <img src="./assets/chi.png">
+    <!-- router view คือ path ต่างๆของเว็บ แก้ใน router/index.js -->
     <router-view/>
   </div>
 </template>

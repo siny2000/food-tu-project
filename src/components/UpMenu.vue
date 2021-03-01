@@ -1,9 +1,5 @@
 <template>
   <div class="main">
-    <div class ="topnav">
-      <a class="active" id="storename">Store Name</a>
-      <img src="img_avatar.png" alt="Avatar">
-    </div>
     <div class="container">
       <div class="row">
       <!--ไว้ติ้กว่าเมนูไหนมี และขอแปะไว้ก่อนเดี๋ยวมาเขียนระบบ-->
@@ -13,26 +9,22 @@
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">Order Number</th>
-                  <th scope="col">Order Name</th>
-                  <th scope="col">Time</th>
+                  <th scope="col" width ="500">Menu</th>
+                  <th scope="col">Checkbox</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">1</th>
                   <td>Mark</td>
-                  <td>Otto</td>
+                  <td><input type="checkbox" class="largecheck"></td>
                 </tr>
                 <tr>
-                  <th scope="row">2</th>
                   <td>Jacob</td>
-                  <td>Thornton</td>
+                  <td><input type="checkbox" class="largecheck"></td>
                 </tr>
                 <tr>
-                  <th scope="row">3</th>
                   <td>Larry</td>
-                  <td>the Bird</td>
+                  <td><input type="checkbox" class="largecheck"></td>
                 </tr>
               </tbody>
             </table>
@@ -45,33 +37,31 @@
             <table class="table">
               <thead class="thead-dark">
                 <tr>
-                  <th scope="col">Order Number</th>
-                  <th scope="col">Order Name</th>
-                  <th scope="col">Time</th>
+                  <th scope="col" width ="400">Add-on</th>
+                  <th scope="col">Checkbox</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Mark</td>
-                  <td>Otto</td>
+                  <td>Markkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</td>
+                  <td><input type="checkbox" class="largecheck"></td>
                 </tr>
                 <tr>
-                  <th scope="row">2</th>
                   <td>Jacob</td>
-                  <td>Thornton</td>
+                  <td><input type="checkbox" class="largecheck"></td>
                 </tr>
                 <tr>
-                  <th scope="row">3</th>
                   <td>Larry</td>
-                  <td>the Bird</td>
+                  <td><input type="checkbox" class="largecheck"></td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
+        <!--ปุ่มกลับละก็ปุ่มยืนยัน-->
+        <div class="col-md-6"><router-link to="/Store"><div class="buttons"><button type="button" class="btn btn-info" id="backbutton">BACK</button></div></router-link></div>
+        <div class="col-md-6"><router-link to="/Store"><div class="buttons"><button type="button" class="btn btn-warning" id="savebutton">SAVE</button></div></router-link></div>
       </div>
-      <!--ปุ่มกลับละก็ปุ่มยืนยัน-->
     </div>
   </div>
 </template>
@@ -83,35 +73,23 @@
 </script>
 
 <style scoped>
-  .topnav {
-    overflow: hidden;
-    background-color: #333;
-  }
-
-  .topnav a {
-    float: left;
-    color: #f2f2f2;
-    text-align: center;
-    text-decoration: none;
-    font-size: 17px;
-    padding: 20px 16px;
-  }
-
-  .topnav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  .topnav a.active {
-    background-color: #4CAF50;
-    color: white;
-  }
-
-  img {
-    border-radius: 50%;
-    float: right;
-  }
   .container{
-    margin: 50px;
+    margin: auto;
+    margin-top: 50px;
+  }
+  .addonlist{
+    margin: 20px;
+  }
+  .menulist{
+    margin: 20px;
+  }
+  .largecheck{
+    width: 20px;
+    height: 20px;
+  }
+  .buttons{
+    width: 200px;
+    margin: auto;
+    margin-top: 100px;
   }
 </style>

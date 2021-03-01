@@ -63,10 +63,6 @@
         <div class="col-md-6"><router-link to="/Store"><div class="buttons"><button type="button" class="btn btn-warning" id="savebutton">SAVE</button></div></router-link></div>
       </div>
     </div>
-    
-
-    
-    
   </div>
 </template>
 

@@ -1,13 +1,11 @@
 <template>
     <div class="FollowUs">
-        <!--แถบข้างบนค้าบ-->
-        <div class="topnav">
-            <router-link to="/Store">STORE</router-link>
-            <router-link to="/User">USER</router-link>
-            <router-link to="/About">ABOUT</router-link>
-            <router-link to="/Team">TEAM</router-link>
-            <router-link to="/FollowUs">FOLLOW US</router-link>
-        </div>
-
+    <h1>Test by Ip4</h1>
     </div>
 </template>
+
+<script>
+export default {
+  name: 'FollowUs'
+}
+</script>

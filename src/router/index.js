@@ -5,6 +5,9 @@ import Store from '@/components/Store'
 import UpdateMenu from '@/components/UpMenu'
 import Verification from '@/components/Verification'
 import User from '@/components/User'
+import About from '@/components/About'
+import FollowUs from '@/components/FollowUs'
+import Team from '@/components/Team'
 
 Vue.use(Router)
 
@@ -35,6 +38,21 @@ export default new Router({
       path: '/Verification',
       name: 'Verification',
       component: Verification
+    },
+    {
+      path: '/About',
+      name: 'About',
+      component: About
+    },
+    {
+      path: '/FollowUs',
+      name: 'FollowUs',
+      component: FollowUs
+    },
+    {
+      path: '/Team',
+      name: 'Team',
+      component: Team
     }
   ]
 })

@@ -1,15 +1,15 @@
 <template>
   <div class="user">
     <h1>{{ msg }}</h1>
-      <!-- -->
-      <div class ="topnav">
-        <a class="active" id="storename">User</a>
-        <router-link to="/">Sign up</router-link>
-        <router-link to="/">Sign in</router-link>
-        <router-link to="/">Back</router-link>
-    
-    
-      </div>
+
+      <!--แถบข้างบนค้าบ-->
+    <div class="topnav">
+      <router-link to="/Store">STORE</router-link>
+      <router-link to="/User">USER</router-link>
+      <router-link to="/About">ABOUT</router-link>
+      <router-link to="/Team">TEAM</router-link>
+      <router-link to="/FollowUs">FOLLOW US</router-link>
+    </div>
 
       <!--ลิสต์ของออเดอร์ -->
       
@@ -30,12 +30,14 @@ export default {
 <style scoped>
 
 .topnav {
+  height: 50px;
+  float: center;
   overflow: hidden;
   background-color: #333;
 }
 
 .topnav a {
-  float: left;
+  float: center;
   color: #f2f2f2;
   text-align: center;
   text-decoration: none;

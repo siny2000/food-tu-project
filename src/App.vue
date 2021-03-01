@@ -9,6 +9,8 @@
       <router-link to="/About">ABOUT</router-link>
       <router-link to="/Team">TEAM</router-link>
       <router-link to="/FollowUs">FOLLOW US</router-link>
+      <router-link to="/Login">Login</router-link>
+      <router-link to="/Register">Register</router-link>
     </div>
 
 
@@ -36,7 +38,7 @@ export default {
   text-align: center;
   text-decoration: none;
   font-size: 17px;
-  padding: 20px 60px;
+  padding: 10px 50px;
 }
 
 .topnav a:hover {
@@ -46,5 +48,6 @@ export default {
 .topnav a.active {
   background-color: #4CAF50;
   color: white;
+  margin: 60;
 }
 </style>

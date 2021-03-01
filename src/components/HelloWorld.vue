@@ -1,7 +1,7 @@
 <template>
-
   <div class="main">
     <h1>{{ msg }}</h1>
+<<<<<<< HEAD
 
     <!-- เลือก login หรือ register -->
     <div><router-link to="/Login">Login</router-link></div>
@@ -16,6 +16,9 @@
     
     <!-- ปล. มันยังเป็นแค่ลิ้งค์ ถ้าว่างก็หาวิธีใส่ปุ่มให้หน่อยนะ -->
 
+=======
+    <h1>Test by Ip</h1>
+>>>>>>> 614eee5b3d4d042f74e541ec99442568ecd3d524
   </div>
 </template>
 
@@ -24,22 +27,11 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome To TU food '
+      msg: ' '
     }
   }
 }
-
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-button {
-  width: 50%;
-  height: 30px;
-  background-color:rgba(135, 88, 180, 0.425);
-}
-h1, h2 {
-  font-weight: normal;
-}
-
 </style>

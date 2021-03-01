@@ -1,12 +1,6 @@
 <template>
   <div class="store">
-      <!--แถบเมนู+โปรไฟล์ -->
-      <div class ="topnav">
-        <a class="active" id="storename">Store Name</a>
-        <router-link to="/UpdateMenu">Update Menu</router-link>
-        <img src="img_avatar.png" alt="Avatar">
-      </div>
-      <!--ลิสต์ของออเดอร์ -->
+      <!--วางไว้ก่อนเดี๋ยวมาเขียนระบบ-ลิสต์ของออเดอร์ -->
       <div class="listordermenu">
         <h1>Order List</h1>
         <div class="ordermenu">
@@ -48,33 +42,9 @@ export default {
 </script>
 
 <style scoped>
-
-.topnav {
-  overflow: hidden;
-  background-color: #333;
-}
-
-.topnav a {
-  float: left;
-  color: #f2f2f2;
-  text-align: center;
-  text-decoration: none;
-  font-size: 17px;
-  padding: 20px 16px;
-}
-
-.topnav a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.topnav a.active {
-  background-color: #4CAF50;
-  color: white;
-}
-
 img {
   border-radius: 50%;
+  float: right;
 }
 
 .listordermenu{

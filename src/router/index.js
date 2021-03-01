@@ -7,6 +7,12 @@ import UpdateMenu from "@/components/UpMenu";
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
 
+import Verification from "@/components/Verification";
+import User from "@/components/User";
+import About from "@/components/About";
+import FollowUs from "@/components/FollowUs";
+import Team from "@/components/Team";
+
 Vue.use(Router);
 
 export default new Router({
@@ -38,6 +44,31 @@ export default new Router({
       path: "/Register",
       name: "Register",
       component: Register,
+    },
+    {
+      path: "/User",
+      name: "User",
+      component: User,
+    },
+    {
+      path: "/Verification",
+      name: "Verification",
+      component: Verification,
+    },
+    {
+      path: "/About",
+      name: "About",
+      component: About,
+    },
+    {
+      path: "/FollowUs",
+      name: "FollowUs",
+      component: FollowUs,
+    },
+    {
+      path: "/Team",
+      name: "Team",
+      component: Team,
     },
   ],
 });

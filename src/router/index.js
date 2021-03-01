@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Store from '@/components/Store'
 import UpdateMenu from '@/components/UpMenu'
+import Verification from '@/components/Verification'
 import User from '@/components/User'
 
 Vue.use(Router)
@@ -28,6 +29,12 @@ export default new Router({
       path: '/User',
       name: 'User',
       component: User
+    }
+    ,
+    {
+      path: '/Verification',
+      name: 'Verification',
+      component: Verification
     }
   ]
 })

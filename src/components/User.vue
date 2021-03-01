@@ -1,7 +1,7 @@
 <template>
   <div class="user">
     <h1>Test by Ip1</h1>
-      <!--ลิสต์ของออเดอร์ -->
+    <router-link tag="button" to="/Choosestore">GO CHECK Choosestore PAGE</router-link>
       
   </div>
 </template>

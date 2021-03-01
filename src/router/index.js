@@ -12,6 +12,7 @@ import User from "@/components/User";
 import About from "@/components/About";
 import FollowUs from "@/components/FollowUs";
 import Team from "@/components/Team";
+import Choosestore from "@/components/Choosestore";
 
 Vue.use(Router);
 
@@ -70,5 +71,10 @@ export default new Router({
       name: "Team",
       component: Team,
     },
-  ],
+    {
+      path: "/Choosestore",
+      name: "Choosestore",
+      component: Choosestore,
+    }
+  ]
 });

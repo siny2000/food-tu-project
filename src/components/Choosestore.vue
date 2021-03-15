@@ -15,14 +15,13 @@
             </div>
             <ul id="foodList"></ul>
         </div>
-        
-        <div class="store">
-      
-            <div class="image"><img src="../assets/ร้านตามสั่ง.jpg" height="150cm" width="150cm"></div>
-            <div class="image"><img src="../assets/ร้านยำยูป้า.jpg" height="150cm" width= "150cmcm"></div>
-            <div class="image"><img src="../assets/ร้านไข่เจียว.jpg" height="150cm" width="150cm"></div>          
-            <div class="image"><img src="../assets/ร้านข้าวแกง.jpg" height="150cm" width="150cm"></div>       
-            <div class="image"><img src="../assets/ก๋วยเตี๋ยวต้มยำ.jpg" height="150cm" width="150cm"></div>
+        <div class="row">
+            <div class="column"><img src="../assets/ป้าแตง.jpg"  height="300cm" width="300cm"></div>
+            <div class="column"><img src="../assets/แดง.jpg"  height="300cm" width="300cm"></div>
+            <div class="column"><img src="../assets/ยำยำ.jpg" height="300cm" width="300cm"></div>
+            <div class="column"><img src="../assets/ยุดยา.jpg"  height="300cm" width="300cm"></div>
+            <div class="column"><img src="../assets/ข้าวมัน.jpg"  height="300cm" width="300cm"></div>
+            <div class="column"><img src="../assets/เลลา.jpg"  height="300cm" width="300cm"></div>
         </div>
     </body> 
 </template>
@@ -36,6 +35,24 @@ export default {
 
 <style scoped>
 
+* {
+  box-sizing: border-box;
+}
+
+.column {
+  float: left;
+  width: 30%;
+  padding: 55px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
 .store{
     width:40%; 
     float:left; 
@@ -47,20 +64,19 @@ img{
   max-width: 100%;
   max-height: 100%;
   border-radius: 20px;
-  border-style:dotted;
   color:rgb(252, 252, 252)}
 
 .image{
     width:100%; 
     padding: 5%;
     margin: 0 5px;
-    float: left;
+    float: right;
     text-align: center;
     line-height: 50px;
     transition: all .2s ease-in-out;
 }
 
-.image img:hover{ 
+.column img:hover{ 
   transform: scale(1.1);
   transition: 0.5s;
 }

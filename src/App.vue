@@ -5,6 +5,7 @@
       <!--แก้ปุ่มเขียวให้กดได้แล้วเปลี่ยนเป็นคำว่า Home -->
       <router-link class="active" to="/">Home</router-link>
       <router-link to="/Store">STORE</router-link>
+      <router-link to="/UpdateMenu">UPDATE MENU</router-link>
       <router-link to="/User">USER</router-link>
       <router-link to="/About">ABOUT</router-link>
       <router-link to="/Team">TEAM</router-link>

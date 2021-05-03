@@ -6,13 +6,13 @@ import UpdateMenu from "@/components/UpMenu";
 // Import หน้าใหม่
 import Login from "@/views/Login.vue";
 import Register from "@/views/Register.vue";
-
 import Verification from "@/components/Verification";
 import User from "@/components/User";
 import About from "@/components/About";
 import FollowUs from "@/components/FollowUs";
 import Team from "@/components/Team";
 import Choosestore from "@/components/Choosestore";
+import MenuInfo from "@/components/MenuInfo";
 
 Vue.use(Router);
 
@@ -35,6 +35,11 @@ export default new Router({
       name: "UpdateMenu",
       component: UpdateMenu,
     },
+    {
+      path: "/MenuInfo",
+      name: "MenuInfo",
+      component: MenuInfo,
+    },    
     {
       // เพิ่ม Path for Login and register
       path: "/Login",

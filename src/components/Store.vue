@@ -4,7 +4,7 @@
       <div class="listordermenu">
         <h1>Order List</h1>
         <div class="ordermenu">
-          <table class="table">
+          <table class="table table-striped table-hover">
             <thead class="thead-dark">
               <tr>
                 <th scope="col" width="200">Order Number</th>
@@ -15,9 +15,9 @@
             <!-- v-for คือวน for loop เอาข้อมูลใน data{product} ข้างล่างมาโชว์เป็นตาราง -->
             <tbody v-for="item in product">
               <tr>
-                <th scope="row">{{item.numorder}}</th>
-                <td><router-link to="/MenuInfo">{{item.name}}</router-link></td>
-                <td>{{item.time}}</td>
+                <th >{{item.numorder}}</th>
+                <td ><router-link to="/MenuInfo">{{item.name}}</router-link></td>
+                <td >{{item.time}}</td>
               </tr>
             </tbody>
           </table>
@@ -37,25 +37,21 @@ export default {
           name: "ผัดไข่เค็ม",
           numorder:1,
           time: "00:00",
-          active: false,
         },
         {
           name: "ผัดไข่เจียว",
           numorder:2,
           time: "00:00",
-          active: false,
         },
         {
           name: "ผัดไข่ต้ม",
           numorder:3,
           time: "00:00",
-          active: false,
         },
         {
           name: "ผัดไข่ดาว",
           numorder:4,
           time: "00:00",
-          active: false,
         }
       ]
     }
@@ -64,11 +60,15 @@ export default {
 </script>
 
 <style scoped>
-img {
-  border-radius: 50%;
-  float: right;
-}
 
+a{
+  color : black;
+  text-decoration: none;
+}
+a:hover{
+  color : #FD7F20;
+  text-decoration: none;
+}
 .listordermenu{
   float: center;
   text-align: center;
@@ -77,5 +77,19 @@ img {
 
 .ordermenu{
   margin: 50px;
+}
+
+.table{
+  background-color : #FDB750;
+}
+tbody:hover{
+  background-color : white;
+}
+tbody:striped{
+  background-color : white
+}
+.thead-dark{
+  background-color : #010100;
+  color : white;
 }
 </style>

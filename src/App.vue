@@ -1,4 +1,5 @@
 <template>
+<div class="main">
   <div id="app">
     <!--แถบข้างบนค้าบ-->
     <div class="topnav">
@@ -19,6 +20,7 @@
     <router-view/>
 
   </div>
+</div>
 </template>
 
 <script>
@@ -30,7 +32,7 @@ export default {
 <style>
 .topnav {
   overflow: hidden;
-  background-color: #333;
+  background-color: #010100;
 }
 
 .topnav a {
@@ -43,11 +45,11 @@ export default {
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: #FDB750;
   color: black;
 }
 .topnav a.active {
-  background-color: #4CAF50;
+  background-color: #FC2E20;
   color: white;
   margin: 60;
 }

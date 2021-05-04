@@ -92,4 +92,14 @@
     margin: auto;
     margin-top: 100px;
   }
+  .table{
+  background-color : #FDB750;
+}
+tbody:striped{
+  background-color : white
+}
+.thead-dark{
+  background-color : #010100;
+  color : white;
+}
 </style>

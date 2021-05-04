@@ -16,14 +16,13 @@
             <tbody v-for="item in product">
               <tr>
                 <th scope="row">{{item.numorder}}</th>
-                <td><router-link to="/">{{item.name}}</router-link></td>
+                <td><router-link to="/MenuInfo">{{item.name}}</router-link></td>
                 <td>{{item.time}}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-      <router-link tag="button" to="/UpdateMenu">Go Check UpdateMenu page</router-link>
   </div>
 </template>
 

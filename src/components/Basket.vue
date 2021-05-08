@@ -7,12 +7,14 @@
       <span style="margin:20px;"
         >สถานะ : {{ restaurantStatus(restaurant.orderStatus) }}</span
       >
-      <span>
-        <button
-          v-if="restaurant.orderStatus == 'NotOrdered'"
-          @click="takeOrder(restaurant)"
-        >
+      <span v-if="restaurant.orderStatus == 'NotOrdered'">
+        <button @click="takeOrder(restaurant)">
           สั่งอาหาร
+        </button>
+      </span>
+      <span v-if="restaurant.orderStatus == 'Travelling'">
+        <button @click="confirmReceive(restaurant)">
+          ยืนยันรับอาหารเรียบร้อย
         </button>
       </span>
 
@@ -26,7 +28,7 @@
           />
           <span style="margin:10px;">ชื่อเมนู : {{ menu.name }}</span>
           <span style="margin:10px;">ราคา : {{ menu.price }}</span>
-          <span style="margin:10px;">จำนวน : {{ menu.menuCount }}</span>
+          <span style="margin:10px;">จำนวน : {{ menu.menuCount }} บาท</span>
           <span
             v-if="restaurant.orderStatus == 'NotOrdered'"
             style="margin:10px;"
@@ -101,8 +103,8 @@ export default {
         return "ยังไม่ได้สั่ง";
       } else if (status == "Ordered") {
         return "ร้านค้ากำลังดำเนินการ";
-      } else if (status == "NotFinished") {
-        return "ยังไม่เสร็จ";
+      } else if (status == "Travelling") {
+        return "อยู่ระหว่างจัดส่ง";
       }
     },
     async decreaseMenu(orderRestaurant, orderMenuList, menu) {
@@ -181,6 +183,14 @@ export default {
           status: "Ordered",
           orderTime: firebase.firestore.FieldValue.serverTimestamp(),
         });
+      this.initial();
+    },
+    async confirmReceive(order) {
+      const db = firebase.firestore();
+      await db
+        .collection("Order")
+        .doc(order.id)
+        .delete();
       this.initial();
     },
   },

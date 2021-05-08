@@ -33,9 +33,10 @@ export default {
         .auth()
         .signOut()
         .then(() => {
-          this.$router.replace({
-            path: "/",
-          });
+          if (this.$route.path != "/")
+            this.$router.replace({
+              name: "HelloWorld",
+            });
         });
     },
   },

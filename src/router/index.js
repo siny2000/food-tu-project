@@ -40,6 +40,9 @@ export default new Router({
       path: "/MenuInfo",
       name: "MenuInfo",
       component: MenuInfo,
+      props: (route) => ({
+        ...route.params,
+      }),
     },
     {
       // เพิ่ม Path for Login and register

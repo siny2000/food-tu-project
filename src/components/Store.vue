@@ -13,13 +13,15 @@
             </tr>
           </thead>
           <!-- v-for คือวน for loop เอาข้อมูลใน data{product} ข้างล่างมาโชว์เป็นตาราง -->
-          <tbody v-for="(item, index) in product" :key="index">
+          <tbody v-for="(order, index) in menuOrders" :key="index">
             <tr>
-              <th>{{ item.numorder }}</th>
+              <th>{{ index + 1 }}</th>
               <td>
-                <router-link to="/MenuInfo">{{ item.name }}</router-link>
+                <a href="#" @click="gotoDetailPage(order)">{{
+                  order.customerName
+                }}</a>
               </td>
-              <td>{{ item.time }}</td>
+              <td>{{ computeElapsedTime(order.orderTime) }}</td>
             </tr>
           </tbody>
         </table>
@@ -29,6 +31,8 @@
 </template>
 
 <script>
+import firebase from "firebase";
+import { mapGetters } from "vuex";
 export default {
   name: "Store",
   data() {
@@ -56,7 +60,78 @@ export default {
           time: "00:00",
         },
       ],
+      menuOrders: [],
+      nowTime: Date.now(),
+      interval: null,
     };
+  },
+  created() {
+    this.initial();
+    this.interval = setInterval(() => {
+      this.nowTime = Date.now();
+    }, 6000);
+  },
+  methods: {
+    async initial() {
+      const db = firebase.firestore();
+      const user = await db
+        .collection("UserData")
+        .doc(this.user.data.uid)
+        .get();
+      var orders = await db
+        .collection("Order")
+        .where("restaurantRef", "==", user.data().restaurantRef)
+        .where("status", "==", "Ordered")
+        .orderBy("orderTime", "asc")
+        .get();
+
+      this.menuOrders = [];
+      for (var i = 0; i < orders.docs.length; i++) {
+        var customer = await orders.docs[i].data().userRef.get();
+        this.menuOrders.push({
+          id: orders.docs[i].id,
+          customerName: customer.data().name,
+          orderTime: orders.docs[i].data().orderTime,
+        });
+      }
+    },
+    convertMS(ms) {
+      var d, h, m, s;
+      s = Math.floor(ms / 1000);
+      m = Math.floor(s / 60);
+      s = s % 60;
+      h = Math.floor(m / 60);
+      m = m % 60;
+      d = Math.floor(h / 24);
+      h = h % 24;
+      h += d * 24;
+      s < 10 ? (s = `0${s}`) : (s = `${s}`);
+      m < 10 ? (m = `0${m}`) : (m = `${m}`);
+      h < 10 ? (h = `0${h}`) : (h = `${h}`);
+      return h + ":" + m;
+    },
+    gotoDetailPage(order) {
+      this.$router.replace({
+        name: "MenuInfo",
+        params: {
+          order: order,
+        },
+      });
+    },
+  },
+  computed: {
+    ...mapGetters({
+      user: "user",
+    }),
+    computeElapsedTime: function() {
+      var vm = this;
+      return function(time) {
+        return vm.convertMS(vm.nowTime - time.toDate());
+      };
+    },
+  },
+  beforeDestroy() {
+    clearInterval(this.interval);
   },
 };
 </script>

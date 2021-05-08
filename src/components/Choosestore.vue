@@ -41,7 +41,10 @@ export default {
   methods: {
     async initial() {
       const db = firebase.firestore();
-      const querySnapshot = await db.collection("Restaurant").get();
+      const querySnapshot = await db
+        .collection("Restaurant")
+        .where("status", "==", "Opened")
+        .get();
       const storage = firebase.storage();
       for (var i = 0; i < querySnapshot.docs.length; i++) {
         const imageUrl = await storage

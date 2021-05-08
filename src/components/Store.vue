@@ -3,6 +3,50 @@
     <!--วางไว้ก่อนเดี๋ยวมาเขียนระบบลิสต์ของออเดอร์ -->
     <div class="listordermenu">
       <h1>Order List</h1>
+      <div class="col" style="font-size:20px;margin-top:20px;">
+        <span style="margin-right:20px;">สถานะร้าน :</span>
+        <span
+          v-if="restaurantStatus == 'Opened'"
+          style="color:green;margin-right:50px;"
+          >เปิดทำการ</span
+        >
+        <span v-else style="color:red;margin-right:50px;">ปิดทำการ</span>
+        <span v-if="restaurantStatus == 'Opened'">
+          <button
+            v-if="!isLoading"
+            type="button"
+            class="btn btn-danger"
+            @click="closeRestaurant()"
+          >
+            กดเพื่อปิดทำการ
+          </button>
+          <div
+            v-if="isLoading"
+            class="spinner-border text-primary"
+            role="status"
+          >
+            <span class="sr-only"></span>
+          </div>
+        </span>
+        <span v-else>
+          <button
+            v-if="!isLoading"
+            type="button"
+            class="btn btn-success"
+            @click="openRestaurant()"
+          >
+            กดเพื่อเปิดทำการ
+          </button>
+          <div
+            v-if="isLoading"
+            class="spinner-border text-primary"
+            role="status"
+          >
+            <span class="sr-only"></span>
+          </div>
+        </span>
+      </div>
+
       <div class="ordermenu">
         <table class="table table-striped table-hover">
           <thead class="thead-dark">
@@ -63,6 +107,9 @@ export default {
       menuOrders: [],
       nowTime: Date.now(),
       interval: null,
+      restaurantStatus: "closed",
+      restaurantId: "",
+      isLoading: false,
     };
   },
   created() {
@@ -84,7 +131,9 @@ export default {
         .where("status", "==", "Ordered")
         .orderBy("orderTime", "asc")
         .get();
-
+      var restaurant = await user.data().restaurantRef.get();
+      this.restaurantStatus = restaurant.data().status;
+      this.restaurantId = restaurant.id;
       this.menuOrders = [];
       for (var i = 0; i < orders.docs.length; i++) {
         var customer = await orders.docs[i].data().userRef.get();
@@ -117,6 +166,30 @@ export default {
           order: order,
         },
       });
+    },
+    async closeRestaurant() {
+      this.isLoading = true;
+      const db = firebase.firestore();
+      await db
+        .collection("Restaurant")
+        .doc(this.restaurantId)
+        .update({
+          status: "Closed",
+        });
+      this.isLoading = false;
+      this.initial();
+    },
+    async openRestaurant() {
+      this.isLoading = true;
+      const db = firebase.firestore();
+      await db
+        .collection("Restaurant")
+        .doc(this.restaurantId)
+        .update({
+          status: "Opened",
+        });
+      this.isLoading = false;
+      this.initial();
     },
   },
   computed: {

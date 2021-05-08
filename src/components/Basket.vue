@@ -9,7 +9,7 @@
       class="container text-center "
       style="padding-left:20px"
     >
-      <div class="card" style="width:70vw;margin:10px;">
+      <div class="card" style="width:75vw;margin:10px;">
         <div class="card-header">
           <div class="row">
             <div class="col">
@@ -22,6 +22,15 @@
               <p style="margin:20px;">
                 สถานะ : {{ restaurantStatus(restaurant.orderStatus) }}
               </p>
+            </div>
+            <div v-if="restaurant.orderStatus != 'NotOrdered'" class="col">
+              <button
+                @click="gotoMenuInfo(restaurant)"
+                class="btn btn-info"
+                style="margin-top:10px;margin-left:30px;color:white"
+              >
+                แชทกับร้าน
+              </button>
             </div>
             <div class="col">
               <button
@@ -163,7 +172,6 @@ export default {
         }
         restaurant.orderMenuList = orderMenuList;
         this.allRestaurant.push(restaurant);
-        console.log(this.allRestaurant);
       }
     },
     restaurantStatus(status) {
@@ -260,6 +268,17 @@ export default {
         .doc(order.id)
         .delete();
       this.initial();
+    },
+    gotoMenuInfo(restaurant) {
+      this.$router.replace({
+        name: "MenuInfo",
+        params: {
+          order: {
+            id: restaurant.id,
+            customerName: this.user.data.displayName,
+          },
+        },
+      });
     },
   },
   computed: {

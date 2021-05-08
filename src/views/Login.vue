@@ -4,7 +4,7 @@
   <div class="container">
     <h1>Login page</h1>
     <div class="row">
-      <form>
+      <form @submit.prevent="login">
         <div class="mb-3">
           <input
             type="email"
@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import firebase from "firebase";
 export default {
   name: "login",
   data() {
@@ -46,10 +47,20 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then((userCredential) => {
-          alert("Login Success")
+          const db = firebase.firestore();
+          db.collection("UserData")
+            .doc(userCredential.user.uid)
+            .get()
+            .then((doc) => {
+              if (doc.data().role == "shop") {
+                this.$router.replace({ path: "/Store" });
+              } else {
+                this.$router.replace({ path: "/Choosestore" });
+              }
+            });
         })
         .catch((error) => {
-          alert("Invalid username or password")
+          alert("Invalid username or password");
         });
     },
   },

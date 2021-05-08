@@ -1,28 +1,27 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import Vue from "vue";
+import App from "./App.vue";
+import router from "./router";
+import store from "./store";
 // import firebase มาใช้
-import firebase from "firebase"
+import firebase from "firebase";
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
-var firebaseConfig = {
-  apiKey: "AIzaSyCDgTPVW8tnv2_-2O7rAoEIZmBqU32Hmfo",
-  authDomain: "login-8bda2.firebaseapp.com",
-  projectId: "login-8bda2",
-  storageBucket: "login-8bda2.appspot.com",
-  messagingSenderId: "1073183550871",
-  appId: "1:1073183550871:web:9a5bca6c453fddf67368d2",
-  measurementId: "G-50KEX0CNBH"
+const firebaseConfig = {
+  apiKey: "AIzaSyDQYs-zxSYoeXjzRTlo6WU957mLzAJGMco",
+  authDomain: "food-ab5af.firebaseapp.com",
+  projectId: "food-ab5af",
+  storageBucket: "food-ab5af.appspot.com",
+  messagingSenderId: "519071358552",
+  appId: "1:519071358552:web:d1b563f623dac32188b42d",
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
-
+firebase.auth().onAuthStateChanged((user) => {
+  store.dispatch("fetchUser", user);
+});
 new Vue({
   router,
   store,
-  render: h => h(App)
-}).$mount('#app')
-
+  render: (h) => h(App),
+}).$mount("#app");

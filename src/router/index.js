@@ -13,7 +13,8 @@ import FollowUs from "@/components/FollowUs";
 import Team from "@/components/Team";
 import Choosestore from "@/components/Choosestore";
 import MenuInfo from "@/components/MenuInfo";
-
+import Restaurant from "@/components/Restaurant";
+import Basket from "@/components/Basket";
 Vue.use(Router);
 
 export default new Router({
@@ -39,7 +40,10 @@ export default new Router({
       path: "/MenuInfo",
       name: "MenuInfo",
       component: MenuInfo,
-    },    
+      props: (route) => ({
+        ...route.params,
+      }),
+    },
     {
       // เพิ่ม Path for Login and register
       path: "/Login",
@@ -80,6 +84,19 @@ export default new Router({
       path: "/Choosestore",
       name: "Choosestore",
       component: Choosestore,
-    }
-  ]
+    },
+    {
+      path: "/Restaurant",
+      name: "Restaurant",
+      component: Restaurant,
+      props: (route) => ({
+        ...route.params,
+      }),
+    },
+    {
+      path: "/Basket",
+      name: "Basket",
+      component: Basket,
+    },
+  ],
 });

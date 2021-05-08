@@ -1,9 +1,11 @@
 <!--หน้า register-->
-
-
 <template>
-  <div class="container">
-    <h1>Register page</h1>
+  <div
+    class="container text-center"
+    style="padding-top:5%;padding-left:25%;padding-right:25%;"
+  >
+    <img src="../assets/exlogofood.png" height="200px" w />
+    <h1>Register</h1>
     <div class="row">
       <form @submit.prevent="register">
         <div class="mb-3">
@@ -13,7 +15,7 @@
             id="fullname"
             required
             aria-describedby="emailHelp"
-            v-model="name" 
+            v-model="name"
             placeholder="Full name"
           />
         </div>
@@ -23,7 +25,7 @@
             class="form-control"
             id="email"
             required
-            v-model="email" 
+            v-model="email"
             placeholder="Email"
           />
         </div>
@@ -50,45 +52,62 @@
             Passwords doesn't match
           </div>
         </div>
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button v-if="!isLoading" type="submit" class="btn btn-primary">
+          Register
+        </button>
+        <div v-if="isLoading" class="spinner-border text-primary" role="status">
+          <span class="sr-only"></span>
+        </div>
+        <div style="margin-top:20px;">
+          <a href="#" @click="gotoLogin()">Already have an account? Sign In.</a>
+        </div>
       </form>
     </div>
   </div>
 </template>
 
 <script>
-import firebase from "firebase"
+import firebase from "firebase";
 export default {
   name: "register",
   data() {
     return {
-      name:"",
+      name: "",
       email: "",
       password: "",
       reenterPassword: "",
-      db: firebase.firestore()
+      db: firebase.firestore(),
+      isLoading: false,
     };
   },
-  
+
   methods: {
-    register(){
+    register() {
+      this.isLoading = true;
       const user = firebase
         .auth()
         .createUserWithEmailAndPassword(this.email, this.password)
         .then((userCredential) => {
-          userCredential.user
-            .updateProfile({
-              displayName: this.name
-            })
-              this.db.collection("UserData").doc(userCredential.user.uid).set({
-                  name:this.name,
-                  role:'user'
-              });
-          this.$router.replace({path: "/Login"})
-       })
+          userCredential.user.updateProfile({
+            displayName: this.name,
+          });
+          this.db
+            .collection("UserData")
+            .doc(userCredential.user.uid)
+            .set({
+              name: this.name,
+              role: "user",
+            });
+          this.isLoading = false;
+          this.$router.replace({ path: "/" });
+        })
         .catch((error) => {
+          this.isLoading = false;
           alert("Unable to register " + error.message);
         });
+    },
+    gotoLogin() {
+      this.$router.replace({ path: "/" });
     },
   },
 };

@@ -1,28 +1,28 @@
 <template>
-  <body>
+  <div class="mainDiv">
     <!-- search bar(เผลอทำแต่มันไม่ได้ใช้) -->
     <div class="Choosestore">
       <h1>Food</h1>
-      <div id="searchWrapper">
-        <center>
-          <img src="../assets/exlogofood.png" height="75px" weight="75px" />
-        </center>
-        <br />
+      <!-- <div id="searchWrapper"> -->
+      <center>
+        <img src="../assets/exlogofood.png" weight="100px" height="100px" />
+      </center>
+      <!-- <br />
         <input
           type="text"
           name="searchBar"
           id="searchBar"
           placeholder="search for a food"
-        />
-      </div>
-      <ul id="foodList"></ul>
+        /> -->
+      <!-- </div> -->
+      <!-- <ul id="foodList"></ul> -->
     </div>
     <div class="row">
       <div class="column" v-for="(item, index) in restaurants" :key="index">
         <img :src="item.image" width="300" @click="gotoRestaurant(item)" />
       </div>
     </div>
-  </body>
+  </div>
 </template>
 
 <script>
@@ -114,6 +114,7 @@ img {
 }
 
 body {
+  height: 100%;
   font-family: sans-serif;
   background-color: #111d4a;
 }
@@ -157,5 +158,9 @@ h1 {
   position: absolute;
   top: 100px;
   right: 15px;
+}
+.mainDiv {
+  font-family: sans-serif;
+  background-color: #111d4a;
 }
 </style>

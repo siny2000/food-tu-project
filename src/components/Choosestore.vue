@@ -1,5 +1,5 @@
 <template>
-  <div class="mainDiv">
+  <div class="container-fluid mainDiv">
     <!-- search bar(เผลอทำแต่มันไม่ได้ใช้) -->
     <div class="Choosestore">
       <h1>Food</h1>
@@ -162,5 +162,7 @@ h1 {
 .mainDiv {
   font-family: sans-serif;
   background-color: #111d4a;
+  min-height: 100%;
+  height: 100%;
 }
 </style>

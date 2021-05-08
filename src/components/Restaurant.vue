@@ -1,22 +1,87 @@
 <template>
   <div>
-    <h1>{{ restaurant.name }}</h1>
-    <img :src="restaurant.image" alt="restaurant image" width="400" />
-    <p>โทร : {{ restaurant.phoneNumber }}</p>
-    <div>
-      <h2>Menu</h2>
-      <div v-for="(item, index) in menus" :key="index">
-        <img
-          :src="item.image"
-          alt="menu image"
-          width="200"
-          style="margin:20px;"
-        />
-        <span style="margin:20px;">ชื่อเมนู : {{ item.name }}</span>
-        <span style="margin:20px;">ราคา : {{ item.price }} บาท</span>
-        <span style="margin:20px;"
-          ><button @click="addMenuToBasket(item)">เพิ่มลงตะกร้า</button></span
+    <div class="row">
+      <div class="col-2">
+        <button
+          type="button"
+          class="btn btn-primary"
+          style="margin:50px;"
+          @click="$router.replace({ path: '/Choosestore' })"
         >
+          <h3>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="25"
+              height="30"
+              fill="currentColor"
+              class="bi bi-arrow-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+              /></svg
+            >Back
+          </h3>
+        </button>
+      </div>
+      <div class="col-6">
+        <h2 style="margin:45px">Menu</h2>
+        <div
+          v-for="(item, index) in menus"
+          :key="index"
+          style="background-color: #2596be; border: 2px; border-radius: 20px;margin-bottom:10px;"
+        >
+          <div class="row">
+            <div class="col-4">
+              <img
+                :src="item.image"
+                alt="menu image"
+                width="200"
+                style="margin:20px;"
+                class="image"
+              />
+            </div>
+            <div class="col-3">
+              <p style="margin:20px;color:white;">ชื่อเมนู : {{ item.name }}</p>
+            </div>
+            <div class="col-2">
+              <p style="margin:20px;color:white;">
+                ราคา : {{ item.price }} บาท
+              </p>
+            </div>
+            <div class="col-2">
+              <button
+                v-if="currentLoading != index"
+                type="button"
+                class="btn btn-success"
+                @click="addMenuToBasket(item, index)"
+                style="margin-top:20px;"
+              >
+                เพิ่มลงตะกร้า
+              </button>
+              <div
+                v-else
+                class="spinner-border text-success"
+                role="status"
+                style="margin-top:20px;margin-left:20px;"
+              >
+                <span class="sr-only"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-3" style="padding-top:50px;">
+        <h1>{{ restaurant.name }}</h1>
+        <img
+          :src="restaurant.image"
+          alt="restaurant image"
+          width="400"
+          class="image"
+          style="margin-top:20px"
+        />
+        <h4 style="margin:5px;">โทร : {{ restaurant.phoneNumber }}</h4>
       </div>
     </div>
   </div>
@@ -34,6 +99,7 @@ export default {
   data() {
     return {
       menus: [],
+      currentLoading: -1,
     };
   },
   created() {
@@ -52,7 +118,8 @@ export default {
         this.menus.push(tmpData);
       }
     },
-    async addMenuToBasket(menuItem) {
+    async addMenuToBasket(menuItem, index) {
+      this.currentLoading = index;
       const db = firebase.firestore();
       const userRef = db.collection("UserData").doc(this.user.data.uid);
       const restaurantRef = db.collection("Restaurant").doc(this.restaurant.id);
@@ -94,6 +161,7 @@ export default {
           status: "NotOrdered",
         });
       }
+      this.currentLoading = -1;
     },
   },
   computed: {
@@ -104,4 +172,9 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped>
+.image {
+  border: 2px;
+  border-radius: 25px;
+}
+</style>

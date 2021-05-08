@@ -23,25 +23,25 @@ export default new Vuex.Store({
     SET_USER(state, data) {
       state.user.data = data;
     },
+    SET_ROLE(state, data) {
+      state.user.data.role = data;
+    },
   },
   actions: {
-    async fetchUser({ commit }, user) {
+    fetchUser({ commit }, user) {
       commit("SET_LOGGED_IN", user !== null);
       if (user) {
-        const userData = await firebase
-          .firestore()
-          .collection("UserData")
-          .doc(user.uid)
-          .get();
         commit("SET_USER", {
           displayName: user.displayName,
           email: user.email,
           uid: user.uid,
-          role: userData.data().role,
         });
       } else {
         commit("SET_USER", null);
       }
+    },
+    setUserRole({ commit }, role) {
+      this.commit("SET_ROLE", role);
     },
   },
 });

@@ -106,7 +106,7 @@ export default {
             .sendEmailVerification(actionCodeSetting)
             .then(() => {
               this.isLoading = false;
-              alert("กรุณายืนยันอีเมลก่อนใช้งาน");
+              alert("ลงทะเบียนเรียบร้อย. กรุณายืนยันอีเมลของท่านก่อนใช้งาน");
               this.$router.replace({
                 path: "/",
                 query: {

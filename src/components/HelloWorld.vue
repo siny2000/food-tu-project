@@ -2,6 +2,9 @@
   <div class="main" style="margin-top:5%;">
     <img src="../assets/newlogo.png" height="200px" w />
     <h1 id="welcome">{{ msg }}</h1>
+    <h2 v-if="$route.query.verifyEmailComplete" style="color:green;">
+      Verify Email Complete .
+    </h2>
     <h2>Please Sign In</h2>
 
     <!-- เลือก login หรือ register -->
@@ -73,18 +76,23 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then((userCredential) => {
-          const db = firebase.firestore();
-          db.collection("UserData")
-            .doc(userCredential.user.uid)
-            .get()
-            .then((doc) => {
-              this.isLoading = false;
-              if (doc.data().role == "shop") {
-                this.$router.replace({ path: "/Store" });
-              } else {
-                this.$router.replace({ path: "/Choosestore" });
-              }
-            });
+          if (!userCredential.user.emailVerified && 0) {
+            alert("กรุณายืนยันอีเมลก่อนเข้าใช้งาน !");
+            this.isLoading = false;
+          } else {
+            const db = firebase.firestore();
+            db.collection("UserData")
+              .doc(userCredential.user.uid)
+              .get()
+              .then((doc) => {
+                this.isLoading = false;
+                if (doc.data().role == "shop") {
+                  this.$router.replace({ path: "/Store" });
+                } else {
+                  this.$router.replace({ path: "/Choosestore" });
+                }
+              });
+          }
         })
         .catch((error) => {
           this.isLoading = false;

@@ -41,7 +41,13 @@
         <div
           v-for="(item, index) in menus"
           :key="index"
-          style="background-color: #2596be; border: 2px; border-radius: 20px;margin-bottom:10px;"
+          :style="{
+            backgroundColor: '#2596be',
+            border: '2px',
+            borderRadius: '20px',
+            marginBottom: '10px',
+            display: item.status == 'Available' ? 'block' : 'none',
+          }"
         >
           <div class="row">
             <div class="col-4">

@@ -98,8 +98,26 @@ export default {
               name: this.name,
               role: "user",
             });
-          this.isLoading = false;
-          this.$router.replace({ path: "/" });
+          const actionCodeSetting = {
+            url: "http://localhost:8080?verifyEmailComplete=true",
+            handleCodeInApp: true,
+          };
+          userCredential.user
+            .sendEmailVerification(actionCodeSetting)
+            .then(() => {
+              this.isLoading = false;
+              alert("กรุณายืนยันอีเมลก่อนใช้งาน");
+              this.$router.replace({
+                path: "/",
+                query: {
+                  sendEmailVerification: true,
+                },
+              });
+            })
+            .catch((error) => {
+              this.isLoading = false;
+              alert(error);
+            });
         })
         .catch((error) => {
           this.isLoading = false;

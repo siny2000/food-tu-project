@@ -76,7 +76,7 @@ export default {
         .auth()
         .signInWithEmailAndPassword(this.email, this.password)
         .then((userCredential) => {
-          if (!userCredential.user.emailVerified && 0) {
+          if (!userCredential.user.emailVerified) {
             alert("กรุณายืนยันอีเมลก่อนเข้าใช้งาน !");
             this.isLoading = false;
           } else {

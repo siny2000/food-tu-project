@@ -99,7 +99,7 @@ export default {
               role: "user",
             });
           const actionCodeSetting = {
-            url: "http://localhost:8080?verifyEmailComplete=true",
+            url: "https://food-ab5af.web.app?verifyEmailComplete=true",
             handleCodeInApp: true,
           };
           userCredential.user

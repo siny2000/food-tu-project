@@ -60,6 +60,12 @@ export default {
       this.$router.push({
         name: "Restaurant",
         params: { restaurant: restaurant },
+        query: {
+          id: restaurant.id,
+          image: restaurant.image,
+          name: restaurant.name,
+          phoneNumer: restaurant.phoneNumer,
+        },
       });
     },
   },
@@ -119,7 +125,7 @@ img {
 body {
   height: 100%;
   font-family: sans-serif;
-  float : center;
+  float: center;
 }
 
 * {

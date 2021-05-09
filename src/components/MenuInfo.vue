@@ -67,7 +67,10 @@
             </div>
           </div>
 
-          <div v-if="orderStatus == 'Ordered'" class="buttons">
+          <div
+            v-if="orderStatus == 'Ordered' && userRole == 'shop'"
+            class="buttons"
+          >
             <button
               type="button"
               class="btn btn-warning"
@@ -86,7 +89,7 @@
           <h1>Order From</h1>
           <div class="orderfrom">
             <div class="fromcontainer">
-              <h3 style="color:white">{{ order.customerName }}</h3>
+              <h3 style="color:white">{{ $route.query.name }}</h3>
             </div>
           </div>
         </div>
@@ -155,11 +158,12 @@
 <script>
 import firebase from "firebase";
 import { mapGetters } from "vuex";
+import { bus } from "../main";
 export default {
   props: {
     order: {
       type: Object,
-      default: {},
+      default: null,
     },
   },
   data() {
@@ -167,24 +171,29 @@ export default {
       orderMenuList: [],
       orderStatus: "",
       chatMessage: [],
+      userRole: "",
     };
   },
   created() {
     this.initial();
+    bus.$on("UserRoleUpdate", (data) => {
+      console.log("UserRoleHasBeenUpdated");
+      this.userRole = data;
+    });
   },
   methods: {
     async initial() {
       const db = firebase.firestore();
       db.collection("Order")
-        .doc(this.order.id)
+        .doc(this.$route.query.id)
         .onSnapshot((snapShot) => {
-          if (snapShot.data().chatMessage) {
+          if (snapShot?.data()?.chatMessage) {
             this.chatMessage = snapShot.data().chatMessage;
           }
         });
       var orders = await db
         .collection("Order")
-        .doc(this.order.id)
+        .doc(this.$route.query.id)
         .get();
       var restaurant = await orders.data().restaurantRef.get();
       this.orderStatus = orders.data().status;
@@ -213,7 +222,7 @@ export default {
       const db = firebase.firestore();
       await db
         .collection("Order")
-        .doc(this.order.id)
+        .doc(this.$route.query.id)
         .update({
           chatMessage: firebase.firestore.FieldValue.arrayUnion({
             name: this.user.data.displayName,
@@ -228,7 +237,7 @@ export default {
       const db = firebase.firestore();
       await db
         .collection("Order")
-        .doc(this.order.id)
+        .doc(this.$route.query.id)
         .update({
           status: "Travelling",
         });
@@ -262,7 +271,7 @@ h1 {
   padding: 25px;
   margin: 15px;
   height: 35%;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .orderfrom {
   float: left;
@@ -296,7 +305,7 @@ h1 {
   margin: auto;
   margin-top: 5%;
   height: 70%;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .image {
   border: 2px;

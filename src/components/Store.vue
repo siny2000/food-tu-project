@@ -77,6 +77,7 @@
 <script>
 import firebase from "firebase";
 import { mapGetters } from "vuex";
+import { bus } from "../main";
 export default {
   name: "Store",
   data() {
@@ -110,38 +111,46 @@ export default {
       restaurantStatus: null,
       restaurantId: "",
       isLoading: false,
+      userRole: "",
     };
   },
   created() {
     this.initial();
+    bus.$on("UserRoleUpdate", (data) => {
+      console.log("UserRoleHasBeenUpdated");
+      this.userRole = this.userRole;
+      this.initial();
+    });
     this.interval = setInterval(() => {
       this.nowTime = Date.now();
     }, 6000);
   },
   methods: {
     async initial() {
-      const db = firebase.firestore();
-      const user = await db
-        .collection("UserData")
-        .doc(this.user.data.uid)
-        .get();
-      var orders = await db
-        .collection("Order")
-        .where("restaurantRef", "==", user.data().restaurantRef)
-        .orderBy("orderTime", "asc")
-        .get();
-      var restaurant = await user.data().restaurantRef.get();
-      this.restaurantStatus = restaurant.data().status;
-      this.restaurantId = restaurant.id;
-      this.menuOrders = [];
-      for (var i = 0; i < orders.docs.length; i++) {
-        var customer = await orders.docs[i].data().userRef.get();
-        if (orders.docs[i].data().status != "NotOrdered") {
-          this.menuOrders.push({
-            id: orders.docs[i].id,
-            customerName: customer.data().name,
-            orderTime: orders.docs[i].data().orderTime,
-          });
+      if (this.user.data) {
+        const db = firebase.firestore();
+        const user = await db
+          .collection("UserData")
+          .doc(this.user.data?.uid)
+          .get();
+        var orders = await db
+          .collection("Order")
+          .where("restaurantRef", "==", user?.data()?.restaurantRef)
+          .orderBy("orderTime", "asc")
+          .get();
+        var restaurant = await user.data().restaurantRef.get();
+        this.restaurantStatus = restaurant.data().status;
+        this.restaurantId = restaurant.id;
+        this.menuOrders = [];
+        for (var i = 0; i < orders.docs.length; i++) {
+          var customer = await orders.docs[i].data().userRef.get();
+          if (orders.docs[i].data().status != "NotOrdered") {
+            this.menuOrders.push({
+              id: orders.docs[i].id,
+              customerName: customer.data().name,
+              orderTime: orders.docs[i].data().orderTime,
+            });
+          }
         }
       }
     },
@@ -165,6 +174,10 @@ export default {
         name: "MenuInfo",
         params: {
           order: order,
+        },
+        query: {
+          id: order.id,
+          name: order.customerName,
         },
       });
     },

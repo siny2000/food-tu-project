@@ -107,7 +107,7 @@ export default {
       menuOrders: [],
       nowTime: Date.now(),
       interval: null,
-      restaurantStatus: "closed",
+      restaurantStatus: null,
       restaurantId: "",
       isLoading: false,
     };
@@ -128,7 +128,6 @@ export default {
       var orders = await db
         .collection("Order")
         .where("restaurantRef", "==", user.data().restaurantRef)
-        .where("status", "==", "Ordered")
         .orderBy("orderTime", "asc")
         .get();
       var restaurant = await user.data().restaurantRef.get();
@@ -137,11 +136,13 @@ export default {
       this.menuOrders = [];
       for (var i = 0; i < orders.docs.length; i++) {
         var customer = await orders.docs[i].data().userRef.get();
-        this.menuOrders.push({
-          id: orders.docs[i].id,
-          customerName: customer.data().name,
-          orderTime: orders.docs[i].data().orderTime,
-        });
+        if (orders.docs[i].data().status != "NotOrdered") {
+          this.menuOrders.push({
+            id: orders.docs[i].id,
+            customerName: customer.data().name,
+            orderTime: orders.docs[i].data().orderTime,
+          });
+        }
       }
     },
     convertMS(ms) {

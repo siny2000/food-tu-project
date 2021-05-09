@@ -77,9 +77,12 @@
               <h5 style="color:white;">จัดส่ง</h5>
             </button>
           </div>
-          <span v-else-if="orderStatus == 'Travelling'"
-            >สถานะ : อยู่ระหว่างจัดส่ง</span
+          <div
+            v-else-if="orderStatus == 'Travelling'"
+            style="padding-left:40%;"
           >
+            <h5>สถานะ : อยู่ระหว่างจัดส่ง</h5>
+          </div>
           <h1>Order From</h1>
           <div class="orderfrom">
             <div class="fromcontainer">

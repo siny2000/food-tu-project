@@ -2,8 +2,8 @@
   <div class="store">
     <!--วางไว้ก่อนเดี๋ยวมาเขียนระบบลิสต์ของออเดอร์ -->
     <div class="listordermenu">
-      <h1>Order List</h1>
-      <div class="col" style="font-size:20px;margin-top:20px;">
+      <h1 style="color:black;">Order List</h1>
+      <div class="col" style="font-size:20px;margin-top:20px;background-color:white;border-radius:10px;padding-top:0.5%;padding-bottom:0.5%;width:100%;">
         <span style="margin-right:20px;">สถานะร้าน :</span>
         <span
           v-if="restaurantStatus == 'Opened'"
@@ -225,11 +225,11 @@ a:hover {
 }
 
 .ordermenu {
-  margin: 50px;
+  margin: 20px;
 }
 
 .table {
-  background-color: #fdb750;
+  background-color: white;
 }
 tbody:hover {
   background-color: white;

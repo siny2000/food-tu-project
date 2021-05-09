@@ -119,7 +119,7 @@ img {
 body {
   height: 100%;
   font-family: sans-serif;
-  background-color: #111d4a;
+  float : center;
 }
 
 * {
@@ -163,8 +163,8 @@ h1 {
   right: 15px;
 }
 .mainDiv {
+  float: center;
   font-family: sans-serif;
-  background-color: #111d4a;
   min-height: 100%;
   height: 100%;
 }

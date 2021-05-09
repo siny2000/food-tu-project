@@ -19,6 +19,9 @@
         <router-link v-if="user.data.role == 'user'" to="/Basket"
           >BASKET</router-link
         >
+        <router-link to="/About">ABOUT</router-link>
+        <router-link to="/Team">TEAM</router-link>
+        <router-link to="/FollowUs">FOLLOW US</router-link>
         <router-link v-if="!user.loggedIn" to="/Login">Login</router-link>
         <!-- <router-link to="/Register">Register</router-link> -->
         <a
@@ -28,9 +31,6 @@
           style="color:white;"
           >LOGOUT</a
         >
-        <router-link to="/About">ABOUT</router-link>
-        <router-link to="/Team">TEAM</router-link>
-        <router-link to="/FollowUs">FOLLOW US</router-link>
       </div>
 
       <!-- router view คือ path ต่างๆของเว็บ แก้ใน router/index.js -->

@@ -4,7 +4,7 @@
     class="container text-center"
     style="padding-top:5%;padding-left:25%;padding-right:25%;"
   >
-    <img src="../assets/exlogofood.png" height="200px" w />
+    <img src="../assets/newlogo.png" height="200px" w />
     <h1>Register</h1>
     <div class="row">
       <form @submit.prevent="register">

@@ -6,7 +6,7 @@ import store from "./store";
 import firebase from "firebase";
 
 Vue.config.productionTip = false;
-
+export const bus = new Vue();
 const firebaseConfig = {
   apiKey: "AIzaSyDQYs-zxSYoeXjzRTlo6WU957mLzAJGMco",
   authDomain: "food-ab5af.firebaseapp.com",

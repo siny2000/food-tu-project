@@ -1,7 +1,7 @@
-import { getIterator } from "core-js";
 import Vue from "vue";
 import Vuex from "vuex";
 import firebase from "firebase";
+import { bus } from "../main";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -36,12 +36,21 @@ export default new Vuex.Store({
           email: user.email,
           uid: user.uid,
         });
+        const db = firebase.firestore();
+        db.collection("UserData")
+          .doc(user.uid)
+          .get()
+          .then((userData) => {
+            commit("SET_ROLE", userData.data().role);
+            bus.$emit("UserRoleUpdate", userData.data().role);
+          });
       } else {
         commit("SET_USER", null);
+        bus.$emit("UserRoleUpdate", null);
       }
     },
     setUserRole({ commit }, role) {
-      this.commit("SET_ROLE", role);
+      commit("SET_ROLE", role);
     },
   },
 });

@@ -126,11 +126,12 @@
 <script>
 import firebase from "firebase";
 import { mapGetters } from "vuex";
+import { bus } from "../main";
 export default {
   props: {
     order: {
       type: Object,
-      default: {},
+      default: null,
     },
   },
   data() {
@@ -138,24 +139,29 @@ export default {
       orderMenuList: [],
       orderStatus: "",
       chatMessage: [],
+      userRole: "",
     };
   },
   created() {
     this.initial();
+    bus.$on("UserRoleUpdate", (data) => {
+      console.log("UserRoleHasBeenUpdated");
+      this.userRole = data;
+    });
   },
   methods: {
     async initial() {
       const db = firebase.firestore();
       db.collection("Order")
-        .doc(this.order.id)
+        .doc(this.$route.query.id)
         .onSnapshot((snapShot) => {
-          if (snapShot.data().chatMessage) {
+          if (snapShot?.data()?.chatMessage) {
             this.chatMessage = snapShot.data().chatMessage;
           }
         });
       var orders = await db
         .collection("Order")
-        .doc(this.order.id)
+        .doc(this.$route.query.id)
         .get();
       var restaurant = await orders.data().restaurantRef.get();
       this.orderStatus = orders.data().status;
@@ -184,7 +190,7 @@ export default {
       const db = firebase.firestore();
       await db
         .collection("Order")
-        .doc(this.order.id)
+        .doc(this.$route.query.id)
         .update({
           chatMessage: firebase.firestore.FieldValue.arrayUnion({
             name: this.user.data.displayName,
@@ -199,7 +205,7 @@ export default {
       const db = firebase.firestore();
       await db
         .collection("Order")
-        .doc(this.order.id)
+        .doc(this.$route.query.id)
         .update({
           status: "Travelling",
         });
@@ -235,7 +241,7 @@ h1 {
   margin-left: 4%;
   margin-bottom: 4%;
   height: 35%;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 
 .orderfrom {
@@ -272,7 +278,7 @@ h1 {
   margin: auto;
   margin-top: 3%;
   height: 70%;
-  overflow: scroll;
+  overflow-y: scroll;
 }
 .image {
   border: 2px;

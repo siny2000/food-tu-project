@@ -26,8 +26,8 @@
             <div v-if="restaurant.orderStatus != 'NotOrdered'" class="col">
               <button
                 @click="gotoMenuInfo(restaurant)"
-                class="btn btn-info"
-                style="margin-top:10px;margin-left:30px;color:white"
+                class="btn btn-dark"
+                style="margin-top:10px;margin-left:30px;"
               >
                 แชทกับร้าน
               </button>
@@ -45,6 +45,7 @@
                 v-if="restaurant.orderStatus == 'Travelling'"
                 @click="confirmReceive(restaurant)"
                 class="btn btn-primary"
+                style="margin-top:10px"
               >
                 ยืนยันรับอาหารเรียบร้อย
               </button>
@@ -133,6 +134,7 @@
 <script>
 import firebase from "firebase";
 import { mapGetters } from "vuex";
+import { bus } from "../main";
 export default {
   data() {
     return {
@@ -141,11 +143,15 @@ export default {
   },
   created() {
     this.initial();
+    bus.$on("UserRoleUpdate", (data) => {
+      console.log("UserRoleHasBeenUpdated");
+      this.initial();
+    });
   },
   methods: {
     async initial() {
       const db = firebase.firestore();
-      const userRef = db.collection("UserData").doc(this.user.data.uid);
+      const userRef = db.collection("UserData").doc(this.user.data?.uid);
       const orders = await db
         .collection("Order")
         .where("userRef", "==", userRef)
@@ -277,6 +283,10 @@ export default {
             id: restaurant.id,
             customerName: this.user.data.displayName,
           },
+        },
+        query: {
+          id: restaurant.id,
+          name: this.user.data?.displayName,
         },
       });
     },

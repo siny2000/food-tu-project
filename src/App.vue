@@ -2,33 +2,30 @@
   <div class="main">
     <div id="app">
       <!--แถบข้างบนค้าบ-->
-      <div v-if="chekekDisplayNavBar" class="topnav">
+      <div v-if="checkDisplayNavBar" class="topnav">
         <!--แก้ปุ่มเขียวให้กดได้แล้วเปลี่ยนเป็นคำว่า Home -->
         <!-- <router-link class="active" to="/">Home</router-link> -->
-        <router-link v-if="user.data.role == 'shop'" to="/Store"
-          >STORE</router-link
-        >
+        <router-link v-if="userRole == 'shop'" to="/Store">STORE</router-link>
 
-        <router-link v-if="user.data.role == 'shop'" to="/UpdateMenu"
+        <router-link v-if="userRole == 'shop'" to="/UpdateMenu"
           >UPDATE MENU</router-link
         >
         <!-- <router-link to="/User">USER</router-link> -->
-        <router-link v-if="user.data.role == 'user'" to="/Choosestore"
+        <router-link v-if="userRole == 'user'" to="/Choosestore"
           >STORE</router-link
         >
-        <router-link v-if="user.data.role == 'user'" to="/Basket"
-          >BASKET</router-link
-        >
+        <router-link v-if="userRole == 'user'" to="/Basket">BASKET</router-link>
+        <!-- <router-link v-if="!user.loggedIn" to="/Login">Login</router-link> -->
+        <!-- <router-link to="/Register">Register</router-link> -->
+
         <router-link to="/About">ABOUT</router-link>
         <router-link to="/Team">TEAM</router-link>
         <router-link to="/FollowUs">FOLLOW US</router-link>
-        <router-link v-if="!user.loggedIn" to="/Login">Login</router-link>
-        <!-- <router-link to="/Register">Register</router-link> -->
         <a
           v-if="user.loggedIn"
           href="#"
           @click.prevent="logout"
-          style="color:white;"
+          style="color:red;"
           >LOGOUT</a
         >
       </div>
@@ -42,8 +39,14 @@
 <script>
 import firebase from "firebase";
 import { mapGetters } from "vuex";
+import { bus } from "./main";
 export default {
   name: "App",
+  data() {
+    return {
+      userRole: "",
+    };
+  },
   methods: {
     logout() {
       firebase
@@ -57,13 +60,29 @@ export default {
         });
     },
   },
-  created() {},
+  created() {
+    bus.$on("UserRoleUpdate", (data) => {
+      console.log("UserRoleHasBeenUpdated");
+      this.userRole = data;
+    });
+  },
   computed: {
     ...mapGetters({
       user: "user",
     }),
-    chekekDisplayNavBar() {
+    checkDisplayNavBar() {
       return this.$route.path != "/" && this.$route.path != "/Register";
+    },
+    isUserRole() {
+      return this;
+    },
+    isShopRole() {
+      return this.user.data?.role == "shop";
+    },
+  },
+  watch: {
+    userData(newValue, oldValue) {
+      console.log(newValue, oldValue);
     },
   },
 };

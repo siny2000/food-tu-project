@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="row text-center">
-      <h1>ตะกร้าของฉัน</h1>
+      <h3>ตะกร้าของฉัน</h3>
     </div>
-    <div
-      v-for="(restaurant, index) in allRestaurant"
-      :key="index"
-      class="container text-center "
-      style="padding-left:20px"
-    >
-      <div class="card" style="width:75vw;margin:10px;">
+    <div class="container text-center ">
+      <div
+        v-for="(restaurant, index) in allRestaurant"
+        :key="index"
+        class="card"
+        style="width:100%;margin:10px;"
+      >
         <div class="card-header">
           <div class="row">
             <div class="col">
@@ -147,6 +147,10 @@ export default {
       console.log("UserRoleHasBeenUpdated");
       this.initial();
     });
+    bus.$on("AddMenu", (data) => {
+      console.log("MenuHasBeenAdded");
+      this.initial();
+    });
   },
   methods: {
     async initial() {
@@ -204,7 +208,6 @@ export default {
             menuIndex: menuItem.menuIndex,
           };
         });
-        console.log(menuList);
         await db
           .collection("Order")
           .doc(orderRestaurant.id)

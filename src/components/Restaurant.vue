@@ -1,7 +1,16 @@
 <template>
   <div>
     <div class="row">
-      <div class="col-2">
+      <div class="col-3">
+        <h1 style="margin-left:10%;margin-top:5%;">{{ $route.query.name }}</h1>
+        <img
+          :src="$route.query.image"
+          alt="restaurant image"
+          width="400"
+          class="image"
+          style="margin-top:20p;margin-left:10%"
+        />
+        <h4 style="margin:10%;">โทร : {{ $route.query.phoneNumber }}</h4>
         <button
           type="button"
           class="btn btn-primary"
@@ -25,8 +34,10 @@
           </h3>
         </button>
       </div>
-      <div class="col-6">
-        <h2 style="margin:45px">Menu</h2>
+      <div class="col-4">
+        <div class="container text-center">
+          <h2 style="margin-top:5%">Menu</h2>
+        </div>
         <div
           v-for="(item, index) in menus"
           :key="index"
@@ -72,16 +83,8 @@
           </div>
         </div>
       </div>
-      <div class="col-3" style="padding-top:50px;">
-        <h1>{{ restaurant.name }}</h1>
-        <img
-          :src="restaurant.image"
-          alt="restaurant image"
-          width="400"
-          class="image"
-          style="margin-top:20px"
-        />
-        <h4 style="margin:5px;">โทร : {{ restaurant.phoneNumber }}</h4>
+      <div class="col-5" style="padding-top:1%;">
+        <Basket></Basket>
       </div>
     </div>
   </div>
@@ -90,16 +93,17 @@
 <script>
 import firebase from "firebase";
 import { mapGetters } from "vuex";
+import Basket from "./Basket";
+import { bus } from "../main";
 export default {
-  props: {
-    restaurant: {
-      type: Object,
-    },
+  components: {
+    Basket,
   },
   data() {
     return {
       menus: [],
       currentLoading: -1,
+      restaurant: null,
     };
   },
   created() {
@@ -107,12 +111,18 @@ export default {
   },
   methods: {
     async initial() {
+      const db = firebase.firestore();
       const storage = firebase.storage();
-      for (var i = 0; i < this.restaurant.menu.length; i++) {
+      const restaurantData = await db
+        .collection("Restaurant")
+        .doc(this.$route.query.id)
+        .get();
+      this.restaurant = restaurantData;
+      for (var i = 0; i < restaurantData.data().menu.length; i++) {
         const imageUrl = await storage
-          .ref(this.restaurant.menu[i].image)
+          .ref(restaurantData.data().menu[i].image)
           .getDownloadURL();
-        var tmpData = this.restaurant.menu[i];
+        var tmpData = restaurantData.data().menu[i];
         tmpData.image = imageUrl;
         tmpData.index = i;
         this.menus.push(tmpData);
@@ -162,12 +172,19 @@ export default {
         });
       }
       this.currentLoading = -1;
+      bus.$emit("AddMenu", menuItem);
     },
   },
   computed: {
     ...mapGetters({
       user: "user",
     }),
+    restaurantName() {
+      return this.restaurant?.name ?? "Name";
+    },
+    restaurantPhoneNumber() {
+      return this.restaurant?.phoneNumber ?? "phoneNumber";
+    },
   },
 };
 </script>

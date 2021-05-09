@@ -1,6 +1,6 @@
 <template>
   <div class="main" style="margin-top:5%;">
-    <img src="../assets/exlogofood.png" height="200px" w />
+    <img src="../assets/newlogo.png" height="200px" w />
     <h1 id="welcome">{{ msg }}</h1>
     <h2>Please Sign In</h2>
 

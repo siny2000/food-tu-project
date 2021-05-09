@@ -1,5 +1,11 @@
 <template>
+<<<<<<< Updated upstream
   <div class="main" style="margin-top:5%;">
+    <img src="../assets/newlogo.png" height="200px" w />
+=======
+  <div class="main" >
+    <img src="../assets/food tu.png" height="150 px" style="margin-top:2%;margin-left:85%;"/>
+>>>>>>> Stashed changes
     <img src="../assets/newlogo.png" height="200px" w />
     <h1 id="welcome">{{ msg }}</h1>
     <h2>Please Sign In</h2>
@@ -96,7 +102,53 @@ export default {
 </script>
 
 <style scoped>
+
+
 .main {
+  background-image: url('../assets/bg.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
   text-align: center;
+  height: 800px;
 }
+h1{
+  color: rgb(19, 13, 99);
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 54px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700; 
+  line-height: 26.4px;
+  text-shadow: rgb(171, 214, 255) 0.08em 0.08em ;
+
+}
+
+h2{
+  margin-top: 3%;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 
+  font-size: 20px; 
+  font-style: normal;
+  font-variant: normal; 
+  font-weight: 900; 
+  line-height: 26.4px;
+  color: rgb(255, 8, 0);
+  
+}
+a{
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 
+  font-size: 15px; 
+  font-style: normal;
+  font-variant: normal; 
+  font-weight: 900; 
+  line-height: 26.4px;
+  color: rgb(255, 8, 0);
+}
+button{
+  background-color: rgb(255, 86, 19);
+  padding-left:40%;
+  padding-right:40%;
+
+}
+
 </style>

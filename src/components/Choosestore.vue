@@ -2,11 +2,18 @@
   <div class="container-fluid mainDiv">
     <!-- search bar(เผลอทำแต่มันไม่ได้ใช้) -->
     <div class="Choosestore">
-      <h1>Food</h1>
+    
+      <img src="../assets/food tu.png" weight="100px" height="100px" />
+
+      <h1>Restaurants</h1>
       <!-- <div id="searchWrapper"> -->
+<<<<<<< Updated upstream
       <center>
         <img src="../assets/newlogo.png" weight="150px" height="150px" />
       </center>
+=======
+      
+>>>>>>> Stashed changes
       <!-- <br />
         <input
           type="text"
@@ -131,9 +138,16 @@ body {
 * {
   box-sizing: border-box;
 }
-h1 {
-  color: #eee;
-  margin-bottom: 30px;
+h1{
+  color: rgb(255, 45, 45);
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 54px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700; 
+  line-height: 26.4px;
+  text-shadow: rgb(255, 255, 255) 0.08em 0.08em ;
+
 }
 .Choosestore {
   padding: 40px;

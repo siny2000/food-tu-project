@@ -2,11 +2,12 @@
 <template>
   <div
     class="container text-center"
-    style="padding-top:5%;padding-left:25%;padding-right:25%;"
+
   >
     <img src="../assets/newlogo.png" height="200px" w />
+<<<<<<< Updated upstream
     <h1>Register</h1>
-    <div class="row">
+    <div class="row" style="width:100%;padding-left:30%;padding-right:30%;">
       <form @submit.prevent="register">
         <div class="mb-3">
           <input
@@ -113,4 +114,50 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.container text-center{
+ background-color: rgb(209, 212, 255);
+
+}
+h1{
+  margin-top: 3%;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 
+  font-size: 40px; 
+  font-style: normal;
+  font-variant: normal; 
+  font-weight: 900; 
+  line-height: 26.4px;
+  color: rgb(44, 4, 97);
+  text-shadow: rgb(171, 214, 255) 0.08em 0.08em ;
+
+}
+ 
+.row{
+  margin-top: 3%;
+  text-align: center;
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 
+  font-size: 15px; 
+  font-style: normal;
+  font-variant: normal; 
+  font-weight: 900; 
+  line-height: 26.4px;
+}
+a{
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 
+  font-size: 15px; 
+  font-style: normal;
+  font-variant: normal; 
+  font-weight: 900; 
+  line-height: 26.4px;
+  color: rgb(28, 0, 155);
+}
+
+button{
+  width:100%;
+  padding-left:40%;
+  padding-right:40%;
+  background-color: crimson;
+
+}
+
+</style>

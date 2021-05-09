@@ -53,7 +53,6 @@
 
 <script>
 import firebase from "firebase";
-import { mapActions } from "vuex";
 export default {
   name: "HelloWorld",
   data() {
@@ -80,7 +79,6 @@ export default {
             .get()
             .then((doc) => {
               this.isLoading = false;
-              this.setUserRole(doc.data().role);
               if (doc.data().role == "shop") {
                 this.$router.replace({ path: "/Store" });
               } else {
@@ -93,7 +91,6 @@ export default {
           alert("Invalid username or password");
         });
     },
-    ...mapActions(["setUserRole"]),
   },
 };
 </script>

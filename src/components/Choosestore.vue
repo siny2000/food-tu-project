@@ -41,7 +41,10 @@ export default {
   methods: {
     async initial() {
       const db = firebase.firestore();
-      const querySnapshot = await db.collection("Restaurant").get();
+      const querySnapshot = await db
+        .collection("Restaurant")
+        .where("status", "==", "Opened")
+        .get();
       const storage = firebase.storage();
       for (var i = 0; i < querySnapshot.docs.length; i++) {
         const imageUrl = await storage
@@ -116,7 +119,7 @@ img {
 body {
   height: 100%;
   font-family: sans-serif;
-  background-color: #111d4a;
+  float : center;
 }
 
 * {
@@ -160,8 +163,8 @@ h1 {
   right: 15px;
 }
 .mainDiv {
+  float: center;
   font-family: sans-serif;
-  background-color: #111d4a;
   min-height: 100%;
   height: 100%;
 }

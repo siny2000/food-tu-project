@@ -59,8 +59,8 @@
           </div>
         </div>
         <!--ปุ่มกลับละก็ปุ่มยืนยัน-->
-        <div class="col-md-6"><router-link to="/Store"><div class="buttons"><button type="button" class="btn btn-info" id="backbutton">BACK</button></div></router-link></div>
-        <div class="col-md-6"><router-link to="/Store"><div class="buttons"><button type="button" class="btn btn-warning" id="savebutton">SAVE</button></div></router-link></div>
+        <div class="col-md-6"><router-link to="/Store"><div class="buttons"><button type="button" class="btn btn-dark" id="backbutton">ย้อนกลับ</button></div></router-link></div>
+        <div class="col-md-6"><router-link to="/Store"><div class="buttons"><button type="button" class="btn btn-danger" id="savebutton">บันทึก</button></div></router-link></div>
       </div>
     </div>
   </div>
@@ -93,10 +93,10 @@
     margin-top: 100px;
   }
   .table{
-  background-color : #FDB750;
+  background-color : white;
 }
 tbody:striped{
-  background-color : white
+  background-color : #FDB750
 }
 .thead-dark{
   background-color : #010100;

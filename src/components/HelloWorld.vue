@@ -1,12 +1,6 @@
 <template>
-<<<<<<< Updated upstream
-  <div class="main" style="margin-top:5%;">
-    <img src="../assets/newlogo.png" height="200px" w />
-=======
   <div class="main" >
     <img src="../assets/food tu.png" height="150 px" style="margin-top:2%;margin-left:85%;"/>
->>>>>>> Stashed changes
-    <img src="../assets/newlogo.png" height="200px" w />
     <h1 id="welcome">{{ msg }}</h1>
     <h2>Please Sign In</h2>
 

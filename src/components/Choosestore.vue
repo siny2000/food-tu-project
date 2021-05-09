@@ -5,7 +5,7 @@
       <h1>Food</h1>
       <!-- <div id="searchWrapper"> -->
       <center>
-        <img src="../assets/exlogofood.png" weight="100px" height="100px" />
+        <img src="../assets/newlogo.png" weight="150px" height="150px" />
       </center>
       <!-- <br />
         <input

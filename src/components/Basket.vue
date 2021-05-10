@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row text-center">
-      <h3>ตะกร้าของฉัน</h3>
+      <h2>My Order</h2>
     </div>
     <div class="container text-center ">
       <div
@@ -306,5 +306,22 @@ export default {
 .image {
   border: 2px;
   border-radius: 10px;
+}
+h2{
+  margin-top: 2%;
+  font-family: cursive;
+  font-weight: bold;
+  text-align: center; 
+  font-size: 20px;
+  font-variant: normal; 
+  color:rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px;
+  height: 30px;
+
+
+ 
 }
 </style>

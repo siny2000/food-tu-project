@@ -140,6 +140,8 @@ h1{
   font-weight: 700; 
   line-height: 26.4px;
   text-shadow: rgb(255, 255, 255) 0.08em 0.08em ;
+  
+
 
 }
 .Choosestore {

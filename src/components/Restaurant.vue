@@ -11,7 +11,7 @@
           
         /-->
         <h1 style="margin-left:10%;margin-top:5%;">{{ $route.query.name }}</h1>
-        <h4 style="margin:10%;">โทร : {{ $route.query.phoneNumber }}</h4>
+       
         <button
           type="button"
           class="btn btn-primary"
@@ -198,7 +198,7 @@ export default {
 }
 
 h1{
-  color: rgb(0, 0, 0);
+  color: rgb(255, 255, 255);
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 30px; 
   font-style: normal; 

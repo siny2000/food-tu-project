@@ -4,12 +4,12 @@
       <div class="row">
         <div class="col">
           <div class="container text-center">
-            <h2 style="margin-top:1%">Menu</h2>
+            <h1 style="margin-top:1%">Menu</h1>
           </div>
           <div
             v-for="(item, index) in menus"
             :key="index"
-            style="background-color: #2596be; border: 2px; border-radius: 20px;margin-bottom:10px;"
+            style="background-color: white; border: 2px; border-radius: 20px;margin-bottom:10px;"
           >
             <div class="row">
               <div class="col-3">
@@ -21,17 +21,17 @@
                   class="image"
                 />
               </div>
-              <div class="col-3">
-                <p style="margin:20px;color:white;">
+              <div class="col-3" style="margin:auto;">
+                <p style="margin:20px;color:black;">
                   ชื่อเมนู : {{ item.name }}
                 </p>
               </div>
-              <div class="col-2">
-                <p style="margin:20px;color:white;">
+              <div class="col-2" style="margin:auto;">
+                <p style="margin:20px;color:black;">
                   ราคา : {{ item.price }} บาท
                 </p>
               </div>
-              <div class="col-4">
+              <div class="col-4" style="margin:auto;">
                 <span>สถานะ : </span>
                 <span v-if="item.status == 'Available'" style="color:green;"
                   >เปิดขาย</span
@@ -45,9 +45,9 @@
                     type="button"
                     class="btn btn-danger"
                     @click="closeMenu(item, index)"
-                    style="margin-top:20px;"
+                    style="width:200px;"
                   >
-                    กดเพิ่มปิดการขาย
+                    ปิดการขาย
                   </button>
                   <div
                     v-else
@@ -64,9 +64,9 @@
                     type="button"
                     class="btn btn-success"
                     @click="openMenu(item, index)"
-                    style="margin-top:20px;"
+                    style="width:200px;"
                   >
-                    กดเพิ่มเปิดการขาย
+                    เปิดการขาย
                   </button>
                   <div
                     v-else

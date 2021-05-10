@@ -20,6 +20,7 @@
             type="button"
             class="btn btn-danger"
             @click="closeRestaurant()"
+            style="width:200px;"
           >
             กดเพื่อปิดทำการ
           </button>
@@ -37,6 +38,7 @@
             type="button"
             class="btn btn-success"
             @click="openRestaurant()"
+            style="width:200px;"
           >
             กดเพื่อเปิดทำการ
           </button>
@@ -130,6 +132,7 @@ export default {
   },
   methods: {
     async initial() {
+      console.log("InitalWasCalled");
       if (this.user.data) {
         const db = firebase.firestore();
         const user = await db
@@ -156,6 +159,7 @@ export default {
             });
           }
         }
+        this.menuOrders = this.getUniqueListBy(this.menuOrders, "id");
       }
     },
     convertMS(ms) {
@@ -208,6 +212,9 @@ export default {
         });
       this.isLoading = false;
       this.initial();
+    },
+    getUniqueListBy(arr, key) {
+      return [...new Map(arr.map((item) => [item[key], item])).values()];
     },
   },
   computed: {

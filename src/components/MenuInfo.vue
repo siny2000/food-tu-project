@@ -44,44 +44,54 @@
             </div>
           </div>
 
-          <div style="margin-top:25%;margin-left:85%;">
+          <div style="margin-top:27%;margin-left:85%;">
             <div class="buttons">
-              <button type="button" class="btn btn-dark"
+              <button
+                type="button"
+                class="btn btn-dark"
                 @click="
                   () => {
                     if (user.data.role == 'shop') {
                       $router.replace({ path: '/Store' });
                     } else {
                       $router.replace({ path: '/Basket' });
-                    }}">
+                    }
+                  }
+                "
+              >
                 <h5>
+                  <!-- <svg>
                     <path
                       fill-rule="evenodd"
                       d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
                     /></svg
-                  >ย้อนกลับ
+                  > -->
+                  ย้อนกลับ
                 </h5>
               </button>
             </div>
           </div>
-
         </div>
-      
+
         <div class="col-md-6" style="height:600px;">
-        <h1 style="margin-left:5%;">Chat Box</h1>
+          <h1 style="margin-left:5%;">Chat Box</h1>
           <div class="chat">
             <div v-for="(message, index) in chatMessage" :key="index">
               <div
                 v-if="message.uid == user.data.uid"
-                class="d-flex flex-row-reverse">
+                class="d-flex flex-row-reverse"
+              >
                 <div
                   style="background-color:#fd7f20;color:white;border: 2px;
-            border-radius: 5px;margin:5px;padding:5px">
+            border-radius: 5px;margin:5px;padding:5px"
+                >
                   {{ message.message }}
                 </div>
               </div>
               <div v-else class="d-flex flex-row">
-                <div style="background-color:#bdbdbd;color:black;border: 2px; border-radius: 5px;margin:5px;padding:5px">
+                <div
+                  style="background-color:#bdbdbd;color:black;border: 2px; border-radius: 5px;margin:5px;padding:5px"
+                >
                   {{ message.message }}
                 </div>
               </div>
@@ -89,7 +99,8 @@
           </div>
           <div
             class="input-group mb-3"
-            style="padding-left:5%;padding-right:5%;margin-top:10px;">
+            style="padding-left:5%;padding-right:5%;margin-top:10px;"
+          >
             <input
               ref="chatText"
               type="text"
@@ -99,25 +110,33 @@
               aria-describedby="button-addon2"
             />
             <button
-              class="btn btn-outline-secondary"
+              class="btn btn btn-danger"
               type="button"
               id="button-addon2"
-              @click="sendMessage()" style="background-color:#fd7f20;"
+              @click="sendMessage()"
+              style="background-color:#fd7f20;"
             >
               Send
             </button>
           </div>
- 
+
           <div style="margin-left:0%;margin-top:5.5%;">
             <div v-if="orderStatus == 'Ordered'" class="buttons">
-              <button type="button" class="btn btn-danger" id="savebutton" @click="sendOrder">
+              <button
+                v-if="userRole == 'shop'"
+                type="button"
+                class="btn btn-danger"
+                id="savebutton"
+                @click="sendOrder"
+              >
                 <h5 style="color:white;">จัดส่ง</h5>
               </button>
             </div>
-            <span v-else-if="orderStatus == 'Travelling'">สถานะ : อยู่ระหว่างจัดส่ง</span>
+            <span v-else-if="orderStatus == 'Travelling'"
+              >สถานะ : อยู่ระหว่างจัดส่ง</span
+            >
           </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -228,11 +247,11 @@ export default {
 
 <style scoped>
 h1 {
-  margin-top: 5%;
+
 }
 .orderinfo {
   float: left;
-  margin-top: 10%;
+  margin-top: 8%;
   background-color: white;
   width: 100%;
   border-radius: 10px;
@@ -264,9 +283,9 @@ h1 {
   float: right;
   background-color: white;
 }
-.buttons{
+.buttons {
   width: 100px;
-  margin-top: 5%;
+  padding: auto;
 }
 .chat {
   float: center;

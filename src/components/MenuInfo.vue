@@ -44,7 +44,7 @@
             </div>
           </div>
 
-          <div style="margin-top:25%;margin-left:85%;">
+          <div style="margin-top:27%;margin-left:85%;">
             <div class="buttons">
               <button type="button" class="btn btn-dark"
                 @click="
@@ -54,20 +54,20 @@
                     } else {
                       $router.replace({ path: '/Basket' });
                     }}">
-                <h5>
+                
                     <path
                       fill-rule="evenodd"
                       d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
                     /></svg
                   >ย้อนกลับ
-                </h5>
+                
               </button>
             </div>
           </div>
 
         </div>
       
-        <div class="col-md-6" style="height:600px;">
+        <div class="col-md-6" style="height:580px;">
         <h1 style="margin-left:5%;">Chat Box</h1>
           <div class="chat">
             <div v-for="(message, index) in chatMessage" :key="index">
@@ -99,19 +99,19 @@
               aria-describedby="button-addon2"
             />
             <button
-              class="btn btn-outline-secondary"
+              class="btn btn btn-danger"
               type="button"
               id="button-addon2"
-              @click="sendMessage()" style="background-color:#fd7f20;"
+              @click="sendMessage()" style="color:white;width:100px;"
             >
               Send
             </button>
           </div>
  
-          <div style="margin-left:0%;margin-top:5.5%;">
+          <div style="margin-left:12%;margin-top:5.5%;">
             <div v-if="orderStatus == 'Ordered'" class="buttons">
               <button type="button" class="btn btn-danger" id="savebutton" @click="sendOrder">
-                <h5 style="color:white;">จัดส่ง</h5>
+                จัดส่ง
               </button>
             </div>
             <span v-else-if="orderStatus == 'Travelling'">สถานะ : อยู่ระหว่างจัดส่ง</span>
@@ -228,11 +228,11 @@ export default {
 
 <style scoped>
 h1 {
-  margin-top: 5%;
+
 }
 .orderinfo {
   float: left;
-  margin-top: 10%;
+  margin-top: 8%;
   background-color: white;
   width: 100%;
   border-radius: 10px;
@@ -266,7 +266,7 @@ h1 {
 }
 .buttons{
   width: 100px;
-  margin-top: 5%;
+  padding: auto;
 }
 .chat {
   float: center;

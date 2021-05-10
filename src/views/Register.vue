@@ -3,6 +3,8 @@
   <div
     class="container text-center"
 
+  >
+    <img src="../assets/food tu.png" height="150 px" style="margin-top:2%;"/>
     <h1>Register</h1>
     <div class="row" style="width:100%;padding-left:30%;padding-right:30%;">
       <form @submit.prevent="register">

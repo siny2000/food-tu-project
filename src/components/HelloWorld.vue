@@ -3,7 +3,7 @@
     <img src="../assets/food tu.png" height="150 px" style="margin-top:2%;margin-left:85%;"/>
     <h1 id="welcome">{{ msg }}</h1>
     <h2 v-if="$route.query.verifyEmailComplete" style="color:green;">
-      Verify Email Complete .
+      Verify Email Complete.
     </h2>
     <h2>Please Sign In</h2>
 

@@ -30,8 +30,9 @@ export default {
 </script>
 
 <style scoped>
+
 h1 {
-  
+  margin: 40px;
   font-size: xx-large;
 
 }
@@ -42,10 +43,10 @@ p {
 
 }
 body{
+  background-image: url('../assets/bg2.jpg');
   font-family: Arial, Helvetica, sans-serif;
   font-size: 100%;
   margin: 60px;
-  
 }
 .row{
   display: table-row;
@@ -56,4 +57,5 @@ body{
   
 }
 .image{width:40%;  padding:2%; float: none; display:table-cell ;}
+
 </style>

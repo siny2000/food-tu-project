@@ -50,6 +50,9 @@ p {
 body{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 100%;
+  background-image: url('../assets/bg2.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   
 }
 .image{

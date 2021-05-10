@@ -3,13 +3,14 @@
     <div class="About">
     <h1><strong> ABOUT </strong></h1>
       <center><img src="../assets/โรงอาหาร.jpg"></center>
-    <p>
+    <div class="image"><img src="../assets/food tu.png" width="200" height="200"></div>
+    <h2>
       <strong> FOUNDED IN 2021 </strong>
-    </p>
-    <div class="image"><img src="../assets/food tu.png" height="100 px" ></div>
-    <p>
+    </h2>
+    
+    <h3 style="padding-bottom:30px;">
       <strong> BECAME THE FIRST TU FOOD APPLICATION. </strong>
-    </p>
+    </h3>
     <p>
       จากโปรเจคของรายวิชา CN320 และ SF221 ซึ่งเกี่ยวกับ network และ software process
     <br><br>
@@ -39,12 +40,16 @@ h1 {
 
 h2 {
   font-size: larger;
-  margin: 80px;
+  margin: 40px;
 }
 p {
   display: block;
-  margin: 60px;
-  align-content: flex-start;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  padding:60px;
+  background-color: rgb(255,255,255,0.5);
+
 
 }
 body{
@@ -53,10 +58,15 @@ body{
   background-image: url('../assets/bg2.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
+  text-align: center;
+  padding: 70px;
+
 }
 .image{
-  height: 100px;
-  margin-left: 50px;
-
+  width: 100%;
+  height: 100%;
+  margin:auto;
+  padding: 30px;
+  
 }
 </style>

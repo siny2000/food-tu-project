@@ -53,7 +53,6 @@ body{
   background-image: url('../assets/bg2.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  
 }
 .image{
   height: 100px;

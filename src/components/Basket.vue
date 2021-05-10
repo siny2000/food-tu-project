@@ -307,6 +307,9 @@ export default {
   border: 2px;
   border-radius: 10px;
 }
+<<<<<<< HEAD
+
+=======
 h2{
   margin-top: 2%;
   font-family: cursive;
@@ -324,4 +327,5 @@ h2{
 
  
 }
+>>>>>>> 3b9eb507188d719d939df8a5ff6f98673d3d45f3
 </style>

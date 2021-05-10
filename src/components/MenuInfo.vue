@@ -40,7 +40,7 @@
           <h1 style="margin-left:5%">Order From</h1>
           <div class="orderfrom">
             <div class="fromcontainer">
-              <h3 style="color:black">{{ order.customerName }}</h3>
+              <h3 style="color:black">{{ $route.query.name }}</h3>
             </div>
           </div>
 
@@ -247,7 +247,6 @@ export default {
 
 <style scoped>
 h1 {
-
 }
 .orderinfo {
   float: left;

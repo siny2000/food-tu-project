@@ -312,12 +312,12 @@ h2{
   font-family: cursive;
   font-weight: bold;
   text-align: center; 
-  font-size: 20px;
+  font-size: 30px;
   font-variant: normal; 
-  color:rgb(255, 255, 255);
+  color:rgb(53, 37, 146);
+ text-shadow: rgb(255, 255, 255) 0.08em 0.08em ;
   border: none;
   cursor: pointer;
-  background-color: rgb(0, 0, 0);
   border-radius: 15px;
   height: 30px;
 

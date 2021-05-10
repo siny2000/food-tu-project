@@ -3,7 +3,10 @@
     <!--วางไว้ก่อนเดี๋ยวมาเขียนระบบลิสต์ของออเดอร์ -->
     <div class="listordermenu">
       <h1 style="color:black;">Order List</h1>
-      <div class="col" style="font-size:20px;margin-top:20px;background-color:white;border-radius:10px;padding-top:0.5%;padding-bottom:0.5%;width:100%;">
+      <div
+        class="col"
+        style="font-size:20px;margin-top:20px;background-color:white;border-radius:10px;padding-top:0.5%;padding-bottom:0.5%;width:100%;"
+      >
         <span style="margin-right:20px;">สถานะร้าน :</span>
         <span
           v-if="restaurantStatus == 'Opened'"
@@ -144,7 +147,8 @@ export default {
         this.menuOrders = [];
         for (var i = 0; i < orders.docs.length; i++) {
           var customer = await orders.docs[i].data().userRef.get();
-          if (orders.docs[i].data().status != "NotOrdered") {
+          // console.log(orders.docs[i].data().userRef.id);
+          if (orders.docs[i].data().status != "NotOrdered" && customer.exists) {
             this.menuOrders.push({
               id: orders.docs[i].id,
               customerName: customer.data().name,

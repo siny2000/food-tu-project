@@ -6,6 +6,7 @@
     <p>
       <strong> FOUNDED IN 2021 </strong>
     </p>
+    <div class="image"><img src="../assets/food tu.png" height="100 px" ></div>
     <p>
       <strong> BECAME THE FIRST TU FOOD APPLICATION. </strong>
     </p>
@@ -49,6 +50,14 @@ p {
 body{
   font-family: Arial, Helvetica, sans-serif;
   font-size: 100%;
+  background-image: url('../assets/bg2.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   
+}
+.image{
+  height: 100px;
+  margin-left: 50px;
+
 }
 </style>

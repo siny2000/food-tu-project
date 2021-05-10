@@ -116,6 +116,7 @@ export default {
 }
 h1{
   color: rgb(19, 13, 99);
+  margin-top: 1px;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 54px; 
   font-style: normal; 
@@ -148,6 +149,7 @@ a{
 }
 button{
   background-color: rgb(255, 86, 19);
+  width:100%;
   padding-left:40%;
   padding-right:40%;
 

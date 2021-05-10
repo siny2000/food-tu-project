@@ -132,10 +132,6 @@ export default {
 </script>
 
 <style>
-.container text-center{
- background-color: rgb(209, 212, 255);
-
-}
 h1{
   margin-top: 3%;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 

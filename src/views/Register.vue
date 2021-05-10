@@ -162,7 +162,7 @@ a{
   font-variant: normal; 
   font-weight: 900; 
   line-height: 26.4px;
-  color: rgb(28, 0, 155);
+  color: rgb(0, 20, 110);
 }
 
 button{

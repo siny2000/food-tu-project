@@ -5,8 +5,7 @@
     <h2 v-if="$route.query.verifyEmailComplete" style="color:green;">
       Verify Email Complete.
     </h2>
-    <h2>Please Sign In</h2>
-
+    <h3></h3>
     <!-- เลือก login หรือ register -->
     <!-- <div class="login"><router-link to="/Login">Login</router-link></div>
     <br />
@@ -15,6 +14,7 @@
     </div> -->
 
     <!-- ปล. มันยังเป็นแค่ลิ้งค์ ถ้าว่างก็หาวิธีใส่ปุ่มให้หน่อยนะ -->
+    
     <div style="width:100%;padding-left:40%;padding-right:40%;">
       <form @submit.prevent="login">
         <div class="mb-3">
@@ -45,8 +45,8 @@
           <span class="sr-only"></span>
         </div>
         <div style="margin-top:20px;">
-          <a href="#" @click.prevent="gotoRegister()"
-            >Don't have an account? Register.</a
+          <p>Don't have an account?</p>
+          <a href="#" @click.prevent="gotoRegister()">Sign  Up</a
           >
         </div>
       </form>
@@ -138,8 +138,12 @@ h2{
   color: rgb(255, 8, 0);
   
 }
+h3{
+  margin-top: 5%;
+  line-height: 26.4px;
+}
 a{
-  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 
+  font-family: "Courier New";
   font-size: 15px; 
   font-style: normal;
   font-variant: normal; 

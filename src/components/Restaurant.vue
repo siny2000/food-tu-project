@@ -56,12 +56,13 @@
               />
             </div>
             <div class="col-3">
-              <p style="margin:20px;color:black;">ชื่อเมนู : {{ item.name }}</p>
-            </div>
-            <div class="col-2">
-              <p>
+              <p >ชื่อเมนู : {{ item.name }}</p>
+              <p >
                 ราคา : {{ item.price }} บาท
               </p>
+            </div>
+            <div class="col-2">
+              
             </div>
             <div class="col-2">
               <button
@@ -260,10 +261,11 @@ button{
   margin-left: 5%;
 }
 p{
-  margin:20px;
-  color:rgb(0, 0, 0);
-  margin-right: 25px;
-  margin-left: 15%;
+  margin:auto;
+  margin-top: 40%;
+  width:300%;
+  padding-right:30px;
+  color:black;
 }
 
 </style>

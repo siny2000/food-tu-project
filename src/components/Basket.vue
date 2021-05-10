@@ -37,7 +37,7 @@
                 v-if="restaurant.orderStatus == 'NotOrdered'"
                 @click="takeOrder(restaurant)"
                 class="btn btn-primary"
-                style="margin-top:10px;margin-left:30px"
+                style="margin-top:10px;margin-left:auto"
               >
                 สั่งอาหาร
               </button>

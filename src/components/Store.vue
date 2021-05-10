@@ -20,6 +20,7 @@
             type="button"
             class="btn btn-danger"
             @click="closeRestaurant()"
+            style="width:200px;"
           >
             กดเพื่อปิดทำการ
           </button>
@@ -37,6 +38,7 @@
             type="button"
             class="btn btn-success"
             @click="openRestaurant()"
+            style="width:200px;"
           >
             กดเพื่อเปิดทำการ
           </button>

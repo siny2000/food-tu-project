@@ -44,7 +44,7 @@
             </div>
           </div>
 
-          <div style="margin-top:25%;margin-left:85%;">
+          <div style="margin-top:27%;margin-left:85%;">
             <div class="buttons">
               <button
                 type="button"
@@ -110,7 +110,7 @@
               aria-describedby="button-addon2"
             />
             <button
-              class="btn btn-outline-secondary"
+              class="btn btn btn-danger"
               type="button"
               id="button-addon2"
               @click="sendMessage()"
@@ -247,11 +247,11 @@ export default {
 
 <style scoped>
 h1 {
-  margin-top: 5%;
+
 }
 .orderinfo {
   float: left;
-  margin-top: 10%;
+  margin-top: 8%;
   background-color: white;
   width: 100%;
   border-radius: 10px;
@@ -285,7 +285,7 @@ h1 {
 }
 .buttons {
   width: 100px;
-  margin-top: 5%;
+  padding: auto;
 }
 .chat {
   float: center;

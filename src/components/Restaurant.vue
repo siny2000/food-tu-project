@@ -2,35 +2,28 @@
   <div>
     <div class="row">
       <div class="col-3">
-        <h1 style="margin-left:10%;margin-top:5%;">{{ $route.query.name }}</h1>
-        <img
+        
+        <!--img
           :src="$route.query.image"
           alt="restaurant image"
-          width="400"
+          width="150"
           class="image"
-          style="margin-top:20p;margin-left:10%"
-        />
-        <h4 style="margin:10%;">โทร : {{ $route.query.phoneNumber }}</h4>
+          
+        /-->
+        <h1 style="margin-left:10%;margin-top:5%;">{{ $route.query.name }}</h1>
+       
         <button
           type="button"
           class="btn btn-primary"
-          style="margin:50px;"
+          style="margin:30px;padding-left:1%;"
           @click="$router.replace({ path: '/Choosestore' })"
         >
           <h3>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="30"
-              fill="currentColor"
-              class="bi bi-arrow-left"
-              viewBox="0 0 16 16"
-            >
               <path
                 fill-rule="evenodd"
                 d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-              /></svg
-            >Back
+              />
+              Back
           </h3>
         </button>
       </div>
@@ -42,10 +35,12 @@
           v-for="(item, index) in menus"
           :key="index"
           :style="{
-            backgroundColor: '#2596be',
+            backgroundColor: '#FFFFFF',
             border: '2px',
-            borderRadius: '20px',
+            borderRadius: '30px',
             marginBottom: '10px',
+            height:'5cm',
+            width:'12cm',
             display: item.status == 'Available' ? 'block' : 'none',
           }"
         >
@@ -54,18 +49,20 @@
               <img
                 :src="item.image"
                 alt="menu image"
-                width="200"
-                style="margin:20px;"
+                width="150"
+                height="120"
+                style="margin:10px;"
                 class="image"
               />
             </div>
             <div class="col-3">
-              <p style="margin:20px;color:white;">ชื่อเมนู : {{ item.name }}</p>
-            </div>
-            <div class="col-2">
-              <p style="margin:20px;color:white;">
+              <p >ชื่อเมนู : {{ item.name }}</p>
+              <p >
                 ราคา : {{ item.price }} บาท
               </p>
+            </div>
+            <div class="col-2">
+              
             </div>
             <div class="col-2">
               <button
@@ -73,7 +70,7 @@
                 type="button"
                 class="btn btn-success"
                 @click="addMenuToBasket(item, index)"
-                style="margin-top:20px;"
+                
               >
                 เพิ่มลงตะกร้า
               </button>
@@ -81,7 +78,7 @@
                 v-else
                 class="spinner-border text-success"
                 role="status"
-                style="margin-top:20px;margin-left:20px;"
+                style="margin-top:20px; margin-left:20px;"
               >
                 <span class="sr-only"></span>
               </div>
@@ -200,4 +197,75 @@ export default {
   border: 2px;
   border-radius: 25px;
 }
+
+h1{
+  color: rgb(255, 255, 255);
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 30px; 
+  font-style: normal; 
+  font-variant: normal; 
+  font-weight: 700; 
+  text-align: left;
+  line-height: 26.4px;
+  margin-top:10%;  
+  margin-left:2%;
+  text-shadow: rgb(155, 16, 16) 0.05em 0.05em ;
+
+
+
+  
+  
+}
+h3{
+  font-family: cursive;
+  font-weight: bold;
+  text-align: center; 
+  font-size: 20px;
+  font-variant: normal; 
+  color:rgb(255, 255, 255);
+ 
+}
+
+h2{
+  font-family: cursive;
+  font-weight: bold;
+  text-align: center; 
+  font-size: 20px;
+  font-variant: normal; 
+  color:rgb(255, 255, 255);
+  border: none;
+  cursor: pointer;
+  background-color: rgb(0, 0, 0);
+  border-radius: 15px;
+  height: 30px;
+  width: 420px;
+ 
+}
+button{
+  margin: auto;
+  height: 30px;
+  width: 120px;
+  top:69%;
+  left: 45%;
+  border: none;
+  cursor: pointer;
+  background-color: rgb(207, 0, 0);
+
+  color: rgb(255, 255, 255);
+  
+  border-radius: 15px;
+}
+.col-2{
+  margin: top 5px;; 
+  margin-right: 25px;
+  margin-left: 5%;
+}
+p{
+  margin:auto;
+  margin-top: 40%;
+  width:300%;
+  padding-right:30px;
+  color:black;
+}
+
 </style>

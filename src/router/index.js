@@ -9,7 +9,6 @@ import Register from "@/views/Register.vue";
 import Verification from "@/components/Verification";
 
 import About from "@/components/About";
-import FollowUs from "@/components/FollowUs";
 import Team from "@/components/Team";
 import Choosestore from "@/components/Choosestore";
 import MenuInfo from "@/components/MenuInfo";
@@ -64,11 +63,6 @@ export default new Router({
       path: "/About",
       name: "About",
       component: About,
-    },
-    {
-      path: "/FollowUs",
-      name: "FollowUs",
-      component: FollowUs,
     },
     {
       path: "/Team",

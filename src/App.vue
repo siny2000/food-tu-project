@@ -20,7 +20,7 @@
 
         <router-link to="/About">ABOUT</router-link>
         <router-link to="/Team">TEAM</router-link>
-        <router-link to="/FollowUs">FOLLOW US</router-link>
+        
         <a
           v-if="user.loggedIn"
           href="#"

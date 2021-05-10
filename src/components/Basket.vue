@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row text-center">
-      <h3>ตะกร้าของฉัน</h3>
+      <h2>My Order</h2>
     </div>
     <div class="container text-center ">
       <div
@@ -13,13 +13,13 @@
         <div class="card-header">
           <div class="row">
             <div class="col">
-              <p style="margin:20px;">ชื่อร้าน : {{ restaurant.name }}</p>
+              <p style="margin:20px;width:100%;">ชื่อร้าน : {{ restaurant.name }}</p>
             </div>
             <div class="col">
-              <p style="margin:20px;">โทร : {{ restaurant.phoneNumber }}</p>
+              <p style="margin:20px;width:100%;">โทร : {{ restaurant.phoneNumber }}</p>
             </div>
             <div class="col">
-              <p style="margin:20px;">
+              <p style="margin:20px;width:100%;padding-right:10px;">
                 สถานะ : {{ restaurantStatus(restaurant.orderStatus) }}
               </p>
             </div>
@@ -37,7 +37,7 @@
                 v-if="restaurant.orderStatus == 'NotOrdered'"
                 @click="takeOrder(restaurant)"
                 class="btn btn-primary"
-                style="margin-top:10px;margin-left:30px"
+                style="margin-top:10px;margin-left:auto"
               >
                 สั่งอาหาร
               </button>
@@ -85,7 +85,7 @@
                     @click="
                       decreaseMenu(restaurant, restaurant.orderMenuList, menu)
                     "
-                    class="btn btn-danger"
+                    class="btn btn-danger" 
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +99,7 @@
                         d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"
                       />
                     </svg></button
-                ></span>
+                ></span><p></p>
                 <span
                   v-if="restaurant.orderStatus == 'NotOrdered'"
                   style="margin:10px;"
@@ -306,5 +306,23 @@ export default {
 .image {
   border: 2px;
   border-radius: 10px;
+}
+
+h2{
+  margin-top: 2%;
+  font-family: cursive;
+  font-weight: bold;
+  text-align: center; 
+  font-size: 30px;
+  font-variant: normal; 
+  color:rgb(53, 37, 146);
+ text-shadow: rgb(255, 255, 255) 0.08em 0.08em ;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  height: 30px;
+
+
+ 
 }
 </style>

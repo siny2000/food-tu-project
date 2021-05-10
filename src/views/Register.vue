@@ -4,7 +4,7 @@
     class="container text-center"
 
   >
-     <img src="../assets/food tu.png" height="150 px" style="margin-top:2%;"/>
+    <img src="../assets/food tu.png" height="150 px" style="margin-top:2%;"/>
     <h1>Register</h1>
     <div class="row" style="width:100%;padding-left:30%;padding-right:30%;">
       <form @submit.prevent="register">
@@ -132,10 +132,6 @@ export default {
 </script>
 
 <style>
-.container text-center{
- background-color: rgb(209, 212, 255);
-
-}
 h1{
   margin-top: 3%;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 
@@ -166,7 +162,7 @@ a{
   font-variant: normal; 
   font-weight: 900; 
   line-height: 26.4px;
-  color: rgb(28, 0, 155);
+  color: rgb(0, 20, 110);
 }
 
 button{
@@ -175,6 +171,12 @@ button{
   padding-right:40%;
   background-color: crimson;
 
+}
+body{
+  background-image: url('../assets/bg3.jpg');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
 }
 
 </style>

@@ -243,14 +243,14 @@ a:hover {
   color: #fd7f20;
   text-decoration: none;
 }
-.listordermenu {
+.listordermenu {  
   float: center;
   text-align: center;
-  margin: 50px 200px;
+  margin: auto;
 }
 
 .ordermenu {
-  margin: 20px;
+  margin: auto;
 }
 
 .table {

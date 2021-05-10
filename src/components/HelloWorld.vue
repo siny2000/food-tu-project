@@ -3,7 +3,7 @@
     <img src="../assets/food tu.png" height="150 px" style="margin-top:2%;margin-left:85%;"/>
     <h1 id="welcome">{{ msg }}</h1>
     <h2 v-if="$route.query.verifyEmailComplete" style="color:green;">
-      Verify Email Complete.
+      Verify Email Complete .
     </h2>
     <h2>Please Sign In</h2>
 
@@ -110,13 +110,12 @@ export default {
   background-image: url('../assets/bg.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: 100% 100%;
+  background-size: 120% 120%;
   text-align: center;
   height: 800px;
 }
 h1{
   color: rgb(19, 13, 99);
-  margin-top: 1px;
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 54px; 
   font-style: normal; 
@@ -149,7 +148,6 @@ a{
 }
 button{
   background-color: rgb(255, 86, 19);
-  width:100%;
   padding-left:40%;
   padding-right:40%;
 

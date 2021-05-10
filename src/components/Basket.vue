@@ -307,4 +307,5 @@ export default {
   border: 2px;
   border-radius: 10px;
 }
+
 </style>

@@ -172,5 +172,11 @@ button{
   background-color: crimson;
 
 }
+body{
+  background-image: url('../assets/bg3.jpg');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
 
 </style>

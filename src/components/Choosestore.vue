@@ -147,6 +147,7 @@ h1{
   margin: 0 auto;
   max-width: 1000px;
   text-align: center;
+  
 }
 
 #foodList {
@@ -180,5 +181,8 @@ h1{
   font-family: sans-serif;
   min-height: 100%;
   height: 100%;
+  background-image: url('../assets/bg2.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 </style>

@@ -123,9 +123,13 @@ img {
 }
 
 body {
+  background-image: url('../assets/bg3.jpg');
   height: 100%;
   font-family: sans-serif;
   float: center;
+  font-size: 100%;
+  margin: 60px;
+
 }
 
 * {
@@ -140,6 +144,8 @@ h1{
   font-weight: 700; 
   line-height: 26.4px;
   text-shadow: rgb(255, 255, 255) 0.08em 0.08em ;
+  
+
 
 }
 .Choosestore {

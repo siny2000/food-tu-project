@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="row text-center">
-      <h3>ตะกร้าของฉัน</h3>
+      <h2>My Order</h2>
     </div>
     <div class="container text-center ">
       <div
@@ -307,5 +307,25 @@ export default {
   border: 2px;
   border-radius: 10px;
 }
+<<<<<<< HEAD
 
+=======
+h2{
+  margin-top: 2%;
+  font-family: cursive;
+  font-weight: bold;
+  text-align: center; 
+  font-size: 30px;
+  font-variant: normal; 
+  color:rgb(53, 37, 146);
+ text-shadow: rgb(255, 255, 255) 0.08em 0.08em ;
+  border: none;
+  cursor: pointer;
+  border-radius: 15px;
+  height: 30px;
+
+
+ 
+}
+>>>>>>> 3b9eb507188d719d939df8a5ff6f98673d3d45f3
 </style>

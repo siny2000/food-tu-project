@@ -7,13 +7,6 @@
 
       <h1>Restaurants</h1>
       <!-- <div id="searchWrapper"> -->
-<<<<<<< Updated upstream
-      <center>
-        <img src="../assets/newlogo.png" weight="150px" height="150px" />
-      </center>
-=======
-      
->>>>>>> Stashed changes
       <!-- <br />
         <input
           type="text"

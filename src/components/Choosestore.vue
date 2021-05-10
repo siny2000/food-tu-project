@@ -82,12 +82,17 @@ export default {
   width: 30%;
   padding: 55px;
 }
-
+.row{
+  width: 112%;
+  padding-right:1%;
+  margin:auto;  
+}
 /* Clear floats after image containers */
 .row::after {
   content: "";
   clear: both;
   display: table;
+  margin:auto;
 }
 
 .store {
@@ -125,6 +130,7 @@ img {
 body {
   background-image: url('../assets/bg3.jpg');
   height: 100%;
+  width: 100%;
   font-family: sans-serif;
   float: center;
   font-size: 100%;
@@ -185,10 +191,11 @@ h1{
 .mainDiv {
   float: center;
   font-family: sans-serif;
-  min-height: 100%;
   height: 100%;
+  width: 100%;
+  margin: auto;
   background-image: url('../assets/bg2.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-size: 130%;
 }
+
 </style>

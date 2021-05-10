@@ -2,104 +2,204 @@
   <div class="main">
     <div class="container">
       <div class="row">
-      <!--ไว้ติ้กว่าเมนูไหนมี และขอแปะไว้ก่อนเดี๋ยวมาเขียนระบบ-->
-        <div class ="col-md-6">
-          <h1>Menu List</h1>
-          <div class="menulist">
-            <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col" width ="500">Menu</th>
-                  <th scope="col">Checkbox</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Mark</td>
-                  <td><input type="checkbox" class="largecheck"></td>
-                </tr>
-                <tr>
-                  <td>Jacob</td>
-                  <td><input type="checkbox" class="largecheck"></td>
-                </tr>
-                <tr>
-                  <td>Larry</td>
-                  <td><input type="checkbox" class="largecheck"></td>
-                </tr>
-              </tbody>
-            </table>
+        <div class="col">
+          <div class="container text-center">
+            <h2 style="margin-top:1%">Menu</h2>
+          </div>
+          <div
+            v-for="(item, index) in menus"
+            :key="index"
+            style="background-color: #2596be; border: 2px; border-radius: 20px;margin-bottom:10px;"
+          >
+            <div class="row">
+              <div class="col-3">
+                <img
+                  :src="item.image"
+                  alt="menu image"
+                  width="200"
+                  style="margin:20px;"
+                  class="image"
+                />
+              </div>
+              <div class="col-3">
+                <p style="margin:20px;color:white;">
+                  ชื่อเมนู : {{ item.name }}
+                </p>
+              </div>
+              <div class="col-2">
+                <p style="margin:20px;color:white;">
+                  ราคา : {{ item.price }} บาท
+                </p>
+              </div>
+              <div class="col-4">
+                <span>สถานะ : </span>
+                <span v-if="item.status == 'Available'" style="color:green;"
+                  >เปิดขาย</span
+                >
+                <span v-else style="color:red;">ไม่เปิดขาย</span>
+                <span
+                  v-if="item.status == 'Available'"
+                  style="margin-left:25px;"
+                  ><button
+                    v-if="currentLoading != index"
+                    type="button"
+                    class="btn btn-danger"
+                    @click="closeMenu(item, index)"
+                    style="margin-top:20px;"
+                  >
+                    กดเพิ่มปิดการขาย
+                  </button>
+                  <div
+                    v-else
+                    class="spinner-border text-success"
+                    role="status"
+                    style="margin-top:20px;margin-left:20px;"
+                  >
+                    <span class="sr-only"></span>
+                  </div>
+                </span>
+                <span v-else style="margin-left:25px;"
+                  ><button
+                    v-if="currentLoading != index"
+                    type="button"
+                    class="btn btn-success"
+                    @click="openMenu(item, index)"
+                    style="margin-top:20px;"
+                  >
+                    กดเพิ่มเปิดการขาย
+                  </button>
+                  <div
+                    v-else
+                    class="spinner-border text-success"
+                    role="status"
+                    style="margin-top:20px;margin-left:20px;"
+                  >
+                    <span class="sr-only"></span>
+                  </div>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
-        <!--ไว้ติ้กว่าของไว้เพิ่มอันไหนมี และขอแปะไว้ก่อนเดี๋ยวมาเขียนระบบ-->
-        <div class ="col-md-6">
-          <h1>Add-on List</h1>
-          <div class="addonlist">
-            <table class="table">
-              <thead class="thead-dark">
-                <tr>
-                  <th scope="col" width ="400">Add-on</th>
-                  <th scope="col">Checkbox</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Markkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk</td>
-                  <td><input type="checkbox" class="largecheck"></td>
-                </tr>
-                <tr>
-                  <td>Jacob</td>
-                  <td><input type="checkbox" class="largecheck"></td>
-                </tr>
-                <tr>
-                  <td>Larry</td>
-                  <td><input type="checkbox" class="largecheck"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-        <!--ปุ่มกลับละก็ปุ่มยืนยัน-->
-        <div class="col-md-6"><router-link to="/Store"><div class="buttons"><button type="button" class="btn btn-dark" id="backbutton">ย้อนกลับ</button></div></router-link></div>
-        <div class="col-md-6"><router-link to="/Store"><div class="buttons"><button type="button" class="btn btn-danger" id="savebutton">บันทึก</button></div></router-link></div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'UpdateMenu'
-  }
+import firebase from "firebase";
+import { mapGetters } from "vuex";
+import { bus } from "../main";
+export default {
+  name: "UpdateMenu",
+  data() {
+    return {
+      menus: [],
+      currentLoading: -1,
+      restaurantData: {},
+    };
+  },
+  created() {
+    this.initial();
+    bus.$on("UserRoleUpdate", (data) => {
+      console.log("UserRoleHasBeenUpdated");
+      this.initial();
+    });
+  },
+  methods: {
+    async initial() {
+      const db = firebase.firestore();
+      var userData = await db
+        .collection("UserData")
+        .doc(this.user.data?.uid)
+        .get();
+      var restaurant = await userData.data()?.restaurantRef.get();
+      this.restaurantData = restaurant.data();
+      this.restaurantData.id = restaurant.id;
+      this.menus = [];
+      for (var i = 0; i < restaurant?.data()?.menu.length; i++) {
+        var tmpMenuData = {};
+        tmpMenuData = restaurant?.data()?.menu[i];
+        const imageUrl = await firebase
+          .storage()
+          .ref(restaurant?.data()?.menu[i].image)
+          .getDownloadURL();
+        tmpMenuData.image = imageUrl;
+        this.menus.push(tmpMenuData);
+      }
+    },
+    async openMenu(menu, index) {
+      const db = firebase.firestore();
+      this.currentLoading = index;
+      var newMenuList = this.restaurantData.menu.map((menuItem, indexItem) => {
+        if (indexItem == index) {
+          menuItem.status = "Available";
+        }
+        return menuItem;
+      });
+      await db
+        .collection("Restaurant")
+        .doc(this.restaurantData.id)
+        .update({
+          menu: newMenuList,
+        });
+      menu.status = "Available";
+      this.currentLoading = -1;
+    },
+    async closeMenu(menu, index) {
+      const db = firebase.firestore();
+      this.currentLoading = index;
+      var newMenuList = this.restaurantData.menu.map((menuItem, indexItem) => {
+        if (indexItem == index) {
+          menuItem.status = "NotAvailable";
+        }
+        return menuItem;
+      });
+      await db
+        .collection("Restaurant")
+        .doc(this.restaurantData.id)
+        .update({
+          menu: newMenuList,
+        });
+      menu.status = "NotAvailable";
+      this.currentLoading = -1;
+    },
+  },
+  computed: {
+    ...mapGetters({
+      user: "user",
+    }),
+  },
+};
 </script>
 
 <style scoped>
-  .container{
-    margin: auto;
-    margin-top: 50px;
-  }
-  .addonlist{
-    margin: 20px;
-  }
-  .menulist{
-    margin: 20px;
-  }
-  .largecheck{
-    width: 20px;
-    height: 20px;
-  }
-  .buttons{
-    width: 200px;
-    margin: auto;
-    margin-top: 100px;
-  }
-  .table{
-  background-color : white;
+.container {
+  margin: auto;
 }
-tbody:striped{
-  background-color : #FDB750
+.addonlist {
+  margin: 20px;
 }
-.thead-dark{
-  background-color : #010100;
-  color : white;
+.menulist {
+  margin: 20px;
+}
+.largecheck {
+  width: 20px;
+  height: 20px;
+}
+.buttons {
+  width: 200px;
+  margin: auto;
+  margin-top: 100px;
+}
+.table {
+  background-color: white;
+}
+tbody:striped {
+  background-color: #fdb750;
+}
+.thead-dark {
+  background-color: #010100;
+  color: white;
 }
 </style>

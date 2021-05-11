@@ -131,7 +131,7 @@ export default {
 };
 </script>
 
-<style>
+<style scpoed>
 h1{
   margin-top: 3%;
   font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace; 

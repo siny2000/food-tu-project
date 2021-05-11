@@ -302,7 +302,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .image {
   border: 2px;
   border-radius: 10px;

@@ -120,7 +120,7 @@
             </button>
           </div>
 
-          <div style="margin-left:0%;margin-top:5.5%;">
+          <div style="margin-left:12%;margin-top:5.5%;">
             <div v-if="orderStatus == 'Ordered'" class="buttons">
               <button
                 v-if="userRole == 'shop'"

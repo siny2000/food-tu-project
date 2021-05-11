@@ -5,16 +5,16 @@
     </div>
     <div class="gallery">
       <div class="row">
-        <div class="image"><img src="../assets/beam.jpg"><br>นางสาว สุธาสินี วงค์ศรีชา<br>6210742182</div>
-        <div class="image"><img src="../assets/ip.jpg"><br>นางสาว สุญาดา สินอนันต์<br>6210742133</div>
-        <div class="image"><img src="../assets/palmy.jpg"><br>นางสาว ธันยพร งานเสงี่ยม<br>6210742125</div>
-        <div class="image"><img src="../assets/parn.jpg"><br>นางสาว ปภัสสร เลิศบัญชร<br>6210742323</div>
+        <div class="image"><img src="../assets/beam.jpg"><br>Suthasinee Wongsricha<br>6210742182</div>
+        <div class="image"><img src="../assets/ip.jpg"><br>Suyada Sinanun<br>6210742133</div>
+        <div class="image"><img src="../assets/palmy.jpg"><br>Thanyaporn Ngamsamgeim<br>6210742125</div>
+        <div class="image"><img src="../assets/parn.jpg"><br>Paphassorn Lersbanchorn<br>6210742323</div>
         
       </div>
       <div class="row">
-        <div class="image"><img src="../assets/kt.jpg"><br>นาย ธนบัตร เงินศรี<br>6210742067</div>
-        <div class="image"><img src="../assets/por.jpg"><br>นาย สุทธิพงษ์ ศิริรักษ์<br>6210743065</div>
-        <div class="image"><img src="../assets/flash.jpg"><br>นาย ศุภกร เพ็งอ้น<br>6210742059</div>
+        <div class="image"><img src="../assets/kt.jpg"><br>Tanabut Ngoensri<br>6210742067</div>
+        <div class="image"><img src="../assets/por.jpg"><br>Suttipong Sirirak<br>6210743065</div>
+        <div class="image"><img src="../assets/flash.jpg"><br>Supakorn Peng-ont<br>6210742059</div>
       </div>
     </div>
       

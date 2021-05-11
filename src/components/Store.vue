@@ -1,7 +1,7 @@
 <template>
   <div class="store">
     <!--วางไว้ก่อนเดี๋ยวมาเขียนระบบลิสต์ของออเดอร์ -->
-    <div class="listordermenu">
+    <div class="listordermenu" style="width:80%;">
       <h1 style="color:black;">Order List</h1>
       <div
         class="col"
@@ -56,9 +56,9 @@
         <table class="table table-striped table-hover">
           <thead class="thead-dark">
             <tr>
-              <th scope="col" width="200">Order Number</th>
-              <th scope="col" width="400">Order Name</th>
-              <th scope="col" width="200">Time</th>
+              <th scope="col" width="100">Order Number</th>
+              <th scope="col" width="200">Order Name</th>
+              <th scope="col" width="100">Time</th>
             </tr>
           </thead>
           <!-- v-for คือวน for loop เอาข้อมูลใน data{product} ข้างล่างมาโชว์เป็นตาราง -->

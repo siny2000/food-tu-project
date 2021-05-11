@@ -40,7 +40,7 @@
           <h1 style="margin-left:5%">Order From</h1>
           <div class="orderfrom">
             <div class="fromcontainer">
-              <h3 style="color:black">{{ order.customerName }}</h3>
+              <h3 style="color:black">{{ $route.query.name }}</h3>
             </div>
           </div>
 
@@ -123,7 +123,7 @@
           <div style="margin-left:12%;margin-top:5.5%;">
             <div v-if="orderStatus == 'Ordered'" class="buttons">
               <button
-                v-if="userRole == 'shop'"
+                v-if="isShopRole"
                 type="button"
                 class="btn btn-danger"
                 id="savebutton"
@@ -166,6 +166,7 @@ export default {
     bus.$on("UserRoleUpdate", (data) => {
       console.log("UserRoleHasBeenUpdated");
       this.userRole = data;
+      this.initial();
     });
   },
   methods: {
@@ -241,13 +242,18 @@ export default {
       });
       return this.chatMessage;
     },
+    isShopRole() {
+      return this.user.data?.role == "shop";
+    },
+  },
+  beforeDestroy() {
+    bus.$off();
   },
 };
 </script>
 
 <style scoped>
 h1 {
-
 }
 .orderinfo {
   float: left;

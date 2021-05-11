@@ -108,24 +108,26 @@ export default {
   },
   methods: {
     async initial() {
-      const db = firebase.firestore();
-      var userData = await db
-        .collection("UserData")
-        .doc(this.user.data?.uid)
-        .get();
-      var restaurant = await userData.data()?.restaurantRef.get();
-      this.restaurantData = restaurant.data();
-      this.restaurantData.id = restaurant.id;
-      this.menus = [];
-      for (var i = 0; i < restaurant?.data()?.menu.length; i++) {
-        var tmpMenuData = {};
-        tmpMenuData = restaurant?.data()?.menu[i];
-        const imageUrl = await firebase
-          .storage()
-          .ref(restaurant?.data()?.menu[i].image)
-          .getDownloadURL();
-        tmpMenuData.image = imageUrl;
-        this.menus.push(tmpMenuData);
+      if (this.user.data) {
+        const db = firebase.firestore();
+        var userData = await db
+          .collection("UserData")
+          .doc(this.user.data?.uid)
+          .get();
+        var restaurant = await userData.data()?.restaurantRef.get();
+        this.restaurantData = restaurant.data();
+        this.restaurantData.id = restaurant.id;
+        this.menus = [];
+        for (var i = 0; i < restaurant?.data()?.menu.length; i++) {
+          var tmpMenuData = {};
+          tmpMenuData = restaurant?.data()?.menu[i];
+          const imageUrl = await firebase
+            .storage()
+            .ref(restaurant?.data()?.menu[i].image)
+            .getDownloadURL();
+          tmpMenuData.image = imageUrl;
+          this.menus.push(tmpMenuData);
+        }
       }
     },
     async openMenu(menu, index) {
